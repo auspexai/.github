@@ -16,8 +16,18 @@ A volunteer-driven, open-source distributed compute network for AI safety resear
 - **Untrusted-worker by default** — result replication and signed submissions are core, not optional
 - **Multi-tenant from day one** — Sentinel is the first project; more can follow
 
+## Governance & policies
+
+- **[Governance](https://github.com/auspexai/.github/blob/main/GOVERNANCE.md)** — roles, decision rules, recruitment, conflict of interest
+- **[Code of Conduct](https://github.com/auspexai/.github/blob/main/CODE_OF_CONDUCT.md)** — community standards, reporting, escalation pathway
+- **[Contributing](https://github.com/auspexai/.github/blob/main/CONTRIBUTING.md)** — how to contribute (Platform Contributor and Researcher paths)
+- **[Research Ethics Policy](https://github.com/auspexai/.github/blob/main/RESEARCH_ETHICS_POLICY.md)** — what AI safety research can run on the network and how it's reviewed
+
 ## Contact
 
 - General: [contact@auspexai.network](mailto:contact@auspexai.network)
+- Research / tenant inquiries: [research@auspexai.network](mailto:research@auspexai.network)
+- Security: [security@auspexai.network](mailto:security@auspexai.network)
+- Conduct: [conduct@auspexai.network](mailto:conduct@auspexai.network)
 
 Watch this organization for repository activity as Phase 1 begins.
