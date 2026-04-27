@@ -10,7 +10,7 @@ A volunteer-driven, open-source distributed compute network for AI safety resear
 
 ## Principles
 
-- **Apache-2.0** licensed
+- **AGPL-3.0** licensed — strong copyleft so derivative work and network-served forks remain open
 - **Donate-only** model — no crypto, no tokens, no compensation
 - **Volunteers never paste keys** — OAuth Device Flow + OS-keystore for all credentials
 - **Untrusted-worker by default** — result replication and signed submissions are core, not optional
