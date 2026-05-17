@@ -26,7 +26,7 @@ For the project's strategic direction, mission, and roadmap, see the AuspexAI Pr
 
 ## 2. Project mission (relevant context for decisions)
 
-AuspexAI is a volunteer-driven, AGPL-3.0-licensed, public distributed compute network for AI research. Decisions taken under this governance are made in service of that mission. The project is donate-only — there are no tokens, no compensation flowing through the network, and no monetization of volunteer compute. Governance decisions that would conflict with this mission are out of scope under §8.3 and §8.4.
+AuspexAI is a volunteer-driven, AGPL-3.0-licensed, public distributed compute network for AI research. Decisions taken under this governance are made in service of that mission. **One durable commitment is structurally protected**: the project does not have a crypto-economy layer (no cryptocurrency, no blockchain incentive layer, no on-chain payment, no speculative-token model). Trust runs through signed contribution receipts and named recognition in publications, not through tokens or financial instruments. **Other operational-model questions** — including the volunteer-compensation model (currently donation-only), the project's revenue posture (currently donation-funded), and the donate-only constraint — are not structurally protected; they are the current operating model and are amendable through normal §8.2 governance. The maintainer cannot honestly commit on behalf of the project to forever-no-compensation or forever-no-revenue stances and does not. See `AuspexAI_Principles_and_Scope.md` §4 #7 for the full two-part stance. Governance decisions that would conflict with the durable crypto-economy stance are out of scope under §8.5.
 
 ---
 
@@ -276,7 +276,9 @@ If the Phase 4 reassessment per §10 concludes a Steering committee, CoC Ombud, 
 
 ### 8.5 Mission-aligned constraint
 
-Amendments that would conflict with the project's stated mission (§2) — such as introducing token incentives, monetizing volunteer compute, or removing the donate-only constraint — are out of scope for amendment under this governance. Such proposals require either (a) a successful project fork under the AGPL license rather than change to AuspexAI itself, or (b) a renaming/relaunch as a different project. AuspexAI's mission is structurally protected from drift.
+Amendments that would conflict with the project's stated durable commitment (§2) — specifically, introducing a crypto-economy layer (cryptocurrency, blockchain incentive layer, on-chain payment, or speculative-token model) — are out of scope for amendment under this governance. Such proposals require either (a) a successful project fork under the AGPL license rather than change to AuspexAI itself, or (b) a renaming/relaunch as a different project. The crypto-economy stance is structurally protected from drift.
+
+**All other operational-model questions** — including the volunteer-compensation model, project-level revenue paths (hosted service, enterprise support, custom integration, premium tooling, certification, grants, sponsorships), and the donate-only operating posture — are *normal* §8.2 amendments, not structurally protected. The maintainer cannot honestly commit on behalf of the project to forever-no-compensation or forever-no-revenue stances. Changes to these would follow the standard substantive-amendment process: RFC, deliberation period, public ratification, doc trail revision. The pre-2026-05-17 form of this section bundled three commitments into structural protection and overclaimed; the narrowing is recorded as a 2026-05-17 amendment.
 
 ---
 
@@ -285,6 +287,7 @@ Amendments that would conflict with the project's stated mission (§2) — such 
 | Version | Date | Changes |
 |---------|------|---------|
 | v1 | 2026-04-27 | Initial. Role taxonomy (Volunteer / Platform Contributor / Researcher / Approver / Maintainer), decision rules, recruitment triggers, COI rules, transparency obligations, amendment process. License: AGPL-3.0; CoC: Contributor Covenant 2.1; Contribution: DCO. No standing oversight roles (Steering, Ombud) at Phase 0–3 — deferred to Phase 4 reassessment. CoC accountability when Maintainer is subject of a complaint handled via escalation pathway in `CODE_OF_CONDUCT.md`. |
+| v1.1 | 2026-05-17 | **Monetization stance unbundled and narrowed.** §2 mission statement rewritten to separate one durable commitment (no crypto-economy layer) from operational-model statements that are not structurally protected (volunteer-compensation model, project-level revenue posture, donate-only operating posture). §8.5 narrowed: structurally-protected items reduced from three ("introducing token incentives, monetizing volunteer compute, or removing the donate-only constraint") to one ("introducing a crypto-economy layer"); all other operational-model questions become normal §8.2 amendments. Pre-revision form overclaimed by committing the project to forever-no-compensation and forever-no-revenue stances the maintainer cannot honestly make on the project's behalf. Source of truth for the revision: `Documentation/AuspexAI/v0.1.0/AuspexAI_Principles_and_Scope.md` §4 #7 (revised 2026-05-17). |
 
 ---
 

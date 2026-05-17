@@ -1,6 +1,6 @@
 # AuspexAI
 
-*A volunteer compute network for AI safety research. AGPL-3.0, donation-and-recognition, no tokens, no compensation.*
+*A volunteer compute network for AI safety research. AGPL-3.0, donation-and-recognition, no crypto-economy.*
 
 A volunteer-driven, open-source distributed compute network being built for AI safety research. Researchers will propose experiments; volunteers worldwide will donate compute by running a sandboxed worker. Tenant-neutral by design; the first tenant will be [Sentinel](https://github.com/jasongagne-git/sentinel) — multi-agent LLM behavioral drift research.
 
@@ -15,8 +15,8 @@ Public site live at [auspexai.network](https://auspexai.network).
 ## Principles
 
 - **AGPL-3.0** licensed — strong copyleft so derivative work and network-served forks remain open
-- **Donate-only** model — no crypto, no tokens, no compensation
-- **Recognition without gamification** — signed contribution receipts, mandatory tenant acknowledgment in publications; no leaderboards, no scores, no badges
+- **No crypto-economy** (durable) — no cryptocurrency, no blockchain incentive layer, no on-chain payment, no speculative tokens. Volunteers donate compute under the current operating model; trust runs through signed receipts and named recognition, not tokens
+- **Receipts that build trust, not collectibles** — every contribution becomes a signed receipt, a persistent and citable record linking a volunteer's machine to a specific experiment (like a DOI for compute contribution). Receipt history accumulates as the network's trust substrate, unlocking higher-trust roles over time: unique work assignments, vouching power, Approver eligibility. Plus mandatory tenant acknowledgment in publications. No leaderboards, no scores, no badges.
 - **Volunteers never paste keys** — OAuth Device Flow + OS-keystore for all credentials
 - **Untrusted-worker by default** — result replication and signed submissions are core, not optional
 - **Multi-tenant from day one** — the platform is being designed for multiple tenants; Sentinel is signed up as the first tenant for Phase 1, and the SDK and tenant-acceptance process will open to other research projects from Phase 1 onward

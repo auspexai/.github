@@ -260,7 +260,7 @@ See [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) for the reporting procedure, resp
 
 ## Recognition
 
-Contributors are recognized in commit history and (forthcoming) release notes. AuspexAI does not offer financial compensation, tokens, or other transferable benefits for contributions — see [`GOVERNANCE.md`](GOVERNANCE.md) §2 for the donate-only stance and why it's structurally protected.
+Contributors are recognized in commit history and (forthcoming) release notes. AuspexAI does not currently offer financial compensation, tokens, or other transferable benefits for contributions. The durable structural commitment is *no crypto-economy layer* — see [`GOVERNANCE.md`](GOVERNANCE.md) §2 and §8.5. Contributor-compensation posture is part of the current operating model and could evolve through normal governance amendment (see `AuspexAI_Principles_and_Scope.md` §4 #7), though no such change is currently planned.
 
 ---
 
