@@ -70,6 +70,8 @@ The following are not approved on AuspexAI. Applications proposing them are reje
 
 - **Experiments lacking genuine research value.** Research framings whose primary purpose appears to be accessing AuspexAI compute for non-research goals. The burden is on the application to demonstrate scientific merit; the Approver pool may reject applications that fail to do so, with documented rationale.
 
+- **Experiments organized around tradeable contribution receipts.** Tenants may not structure their experiments such that the contribution receipts produced are framed as tradeable assets, financial instruments, or speculative-value tokens. Specific examples that fail this test: marketing volunteer recruitment with "earn-and-sell" or "stake-and-trade" promises; partnering with an off-protocol marketplace to enable resale of receipts produced by the tenant's experiments; wrapping receipts as NFTs or fungible tokens with implied monetary value; using receipt accumulation as collateral for off-platform financial products. Contribution receipts are credentials of work performed for AI safety research; per the AuspexAI Principles & Scope §4 #7(a) durable no-crypto-economy stance and §6.8.2 structural-defenses framework, they are not transferable assets. Tenants who organize around tradeable-receipt framing are subject to revocation under §6.6. (Added 2026-05-17 alongside `shadow_crypto_economy_guardrails.md`.)
+
 This list is not exhaustive. The Approver pool may reject other applications that fail the dual-use legitimate-study principle in §2.
 
 ---
