@@ -210,7 +210,7 @@ A role-holder recuses from a specific decision when the conflict is direct (e.g.
 
 ### 6.3 Maintainer-as-tenant-author case
 
-A Maintainer who also authors tenant code — common during Phase 0–1 when the same person maintains the platform and authors the Sentinel tenant — must recuse from approving their own tenant. Until the Approver pool is formed with floor of 2 external members, the Maintainer's own tenant cannot proceed to public-network operation under sole-Maintainer approval; an external advisor (named in the public record for that approval) must concur for the approval to stand. The advisor is selected ad-hoc per case from senior unaffiliated OSS or research-community members; this is not a pre-named role. This advisor selection is for the tenant-ethics-and-approval review and is distinct from the CoC complaint advisor selection in `CODE_OF_CONDUCT.md` (which uses a separate three-option process driven by the reporter); a single individual could plausibly serve both functions in different cases, but the selection processes do not overlap.
+A Maintainer who also authors tenant code — common during Phase 0–1 when the same person maintains the platform and authors the first tenant — must recuse from approving their own tenant. Until the Approver pool is formed with floor of 2 external members, the Maintainer's own tenant cannot proceed to public-network operation under sole-Maintainer approval; an external advisor (named in the public record for that approval) must concur for the approval to stand. The advisor is selected ad-hoc per case from senior unaffiliated OSS or research-community members; this is not a pre-named role. This advisor selection is for the tenant-ethics-and-approval review and is distinct from the CoC complaint advisor selection in `CODE_OF_CONDUCT.md` (which uses a separate three-option process driven by the reporter); a single individual could plausibly serve both functions in different cases, but the selection processes do not overlap.
 
 ---
 
@@ -314,7 +314,7 @@ The reassessment is conducted publicly; outcome is recorded as a substantive ame
 | Sole Maintainer | Jason Gagne (`@jasongagne-git`) | Phase 0 bootstrap. Co-Maintainer recruitment per §5.1 active from Phase 1 month 2. |
 | Approver pool | (vacant) | Bootstrap fallback per §5.2 in force. Recruitment per §5.2 triggers. |
 | Platform Contributors | (none external; Maintainer is the sole platform contributor) | Recruitment passively open; explicit recruitment per §5.1 trigger. |
-| Researchers | Implicit (Sentinel tenant authored by Maintainer) | Bootstrap-addendum recusal per §6.3 applies for Maintainer-authored tenants. |
+| Researchers | Implicit (first tenant authored by Maintainer) | Bootstrap-addendum recusal per §6.3 applies for Maintainer-authored tenants. |
 | Volunteers | (none external yet; pre-Phase-3) | Volunteer onboarding live at Phase 3. |
 
 This section is updated as roles are filled.

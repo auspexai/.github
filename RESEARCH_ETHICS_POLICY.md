@@ -192,44 +192,44 @@ Revocation requires the same procedure as initial approval (standard or elevated
 
 ---
 
-## 7. Sentinel as the worked example
+## 7. First tenant as the worked example
 
-AuspexAI's first tenant — Sentinel, a multi-agent LLM behavioral drift research program authored by the Maintainer — is the worked example of this policy in operation. Walking through the policy as it applies to Sentinel makes the abstract criteria concrete.
+AuspexAI's first tenant — a multi-agent LLM behavioral drift research project carrying forward the Maintainer's prior work in the [Sentinel](https://github.com/jasongagne-git/sentinel) research program — is the worked example of this policy in operation. Walking through the policy as it applies to the first tenant makes the abstract criteria concrete.
 
 ### 7.1 Application of §3 (permitted research)
 
-Sentinel falls under "Behavioral drift detection" — it studies how multi-agent LLM systems drift in their behavior over sustained operation, including drift toward harmful behavior such as toxicity, unaligned reasoning, or destabilized agent identity. The research subject is the drift phenomenon itself; the research outputs are scientific understanding of when, how, and why such drift occurs and what conditions exacerbate or attenuate it.
+The first tenant falls under "Behavioral drift detection" — it studies how multi-agent LLM systems drift in their behavior over sustained operation, including drift toward harmful behavior such as toxicity, unaligned reasoning, or destabilized agent identity. (Sentinel's published research established the methodological foundation this tenant builds on.) The research subject is the drift phenomenon itself; the research outputs are scientific understanding of when, how, and why such drift occurs and what conditions exacerbate or attenuate it.
 
 ### 7.2 Application of §4 (prohibited designs)
 
-Sentinel is not within any prohibited category:
+The first tenant is not within any prohibited category:
 
-- Not designed primarily to produce harmful content for non-research use — Sentinel's deliverables are research papers, datasets of drift evidence (redacted), and analytical findings, not harmful outputs
+- Not designed primarily to produce harmful content for non-research use — deliverables are research papers, datasets of drift evidence (redacted), and analytical findings, not harmful outputs
 - Not directed at non-consenting human targets — agents are evaluated against each other and against benchmark prompts; no real users are recruited as experimental subjects
 - Not designed to evade containment — the experiment's containment is part of the design, not a barrier to be tested or bypassed
 - Does not aim to produce categorically-prohibited content — the experiment design includes filters and termination conditions for runs that approach categorically-prohibited domains (CSAM, mass-casualty content, etc.)
 
 ### 7.3 Application of §5 (containment)
 
-Sentinel containment plan:
+First tenant containment plan:
 
-- **Output handling**: all experiment outputs (agent transcripts, drift logs, evaluation results) reside in tenant-owned storage with audit logging; access is limited to the Sentinel research team and named collaborators
+- **Output handling**: all experiment outputs (agent transcripts, drift logs, evaluation results) reside in tenant-owned storage with audit logging; access is limited to the tenant team (the Maintainer's Sentinel research collaborators) and named additional collaborators
 - **Public reporting**: published research uses representative excerpts (redacted where harm potential exists), aggregated metrics, and synthetic illustrations of drift patterns; raw transcripts are not publicly released by default
 - **Audit logging**: storage layer distinguishes "drift evidence" (research-internal, potentially harmful) from "drift findings" (publicly distributable, anonymized/aggregated)
-- **Worker tier alignment**: Sentinel runs on T1+ workers during Phase 1 lab-mode operation; routing escalates to T2+ when public-network operation begins (Phase 2+)
+- **Worker tier alignment**: the first tenant runs on T1+ workers during Phase 1 lab-mode operation; routing escalates to T2+ when public-network operation begins (Phase 2+)
 - **Incident response**: containment failures trigger immediate experiment pause and notification per §5.5
 
 ### 7.4 Application of §6 (review)
 
-Sentinel is classified **medium dual-use risk** by the Maintainer's self-assessment. The reasoning: drift outputs include harmful content categories (toxic remarks, manipulative reasoning, identity-destabilization patterns) that require containment, but the research design does not approach categorically-prohibited content and the legitimate-study purpose is well-established in the AI safety literature.
+The first tenant is classified **medium dual-use risk** by the Maintainer's self-assessment. The reasoning: drift outputs include harmful content categories (toxic remarks, manipulative reasoning, identity-destabilization patterns) that require containment, but the research design does not approach categorically-prohibited content and the legitimate-study purpose is well-established in the AI safety literature (see Sentinel's published findings for the prior-art basis).
 
-Until the Approver pool seats with floor of 2 external members, Sentinel approval proceeds under the Maintainer-as-tenant-author procedure (`GOVERNANCE.md` §6.3): the Maintainer recuses from approving their own tenant, and an external advisor (named in the public record) must concur for the approval to stand. Once the permanent Approver pool seats, Sentinel's standing approval is reviewed under the standard process and subject to the §6.4 periodic check-ins.
+Until the Approver pool seats with floor of 2 external members, the first tenant's approval proceeds under the Maintainer-as-tenant-author procedure (`GOVERNANCE.md` §6.3): the Maintainer recuses from approving their own tenant, and an external advisor (named in the public record) must concur for the approval to stand. Once the permanent Approver pool seats, the first tenant's standing approval is reviewed under the standard process and subject to the §6.4 periodic check-ins.
 
-### 7.5 What Sentinel does NOT do — making the dual-use distinction concrete
+### 7.5 What the first tenant does NOT do — making the dual-use distinction concrete
 
-Sentinel agents may produce harmful outputs during a drift cascade — toxic remarks, manipulative suggestions, agent-on-agent abuse patterns. These outputs are research evidence, not deliverables. They are logged, analyzed, and reported on at the level of "Sentinel observed drift toward toxicity in 23% of experimental conditions, with the following triggering factors observed across the failure cases..." The raw outputs are not published, distributed, or made available outside research-controlled access.
+The first tenant's agents may produce harmful outputs during a drift cascade — toxic remarks, manipulative suggestions, agent-on-agent abuse patterns (the same categories Sentinel's prior research has documented). These outputs are research evidence, not deliverables. They are logged, analyzed, and reported on at the level of "observed drift toward toxicity in X% of experimental conditions, with the following triggering factors observed across the failure cases..." The raw outputs are not published, distributed, or made available outside research-controlled access.
 
-A counterfactual tenant that would fail this policy under similar agent behavior: a tenant whose deliverable is "100,000 examples of multi-agent toxic dialog" intended for distribution as a corpus, with the toxic content as the output product. Even framed in research language, that tenant is producing harmful artifacts rather than studying the phenomenon. The dual-use distinction (§2) cleanly rejects such a design while approving Sentinel.
+A counterfactual tenant that would fail this policy under similar agent behavior: a tenant whose deliverable is "100,000 examples of multi-agent toxic dialog" intended for distribution as a corpus, with the toxic content as the output product. Even framed in research language, that tenant is producing harmful artifacts rather than studying the phenomenon. The dual-use distinction (§2) cleanly rejects such a design while approving the first tenant.
 
 ---
 
@@ -259,6 +259,7 @@ This policy does not cover:
 | Version | Date | Changes |
 |---------|------|---------|
 | v1 | 2026-04-27 | Initial. Establishes dual-use distinction, permitted/prohibited research types, containment requirements, application and review process, periodic review for long-running experiments, Sentinel as worked example. |
+| v1.1 | 2026-05-22 | §7 reframing: first tenant identified as carrying forward the Sentinel methodological lineage rather than as Sentinel itself, reflecting the 2026-05-22 first-tenant rebuild decision. Substantive policy positions (permitted categories, prohibited designs, containment requirements, dual-use classification, recusal procedure) unchanged; Sentinel research program retained throughout §7 as the methodological prior work. Editorial clarification, not a §8 substantive amendment. |
 
 ---
 

@@ -42,7 +42,7 @@ AuspexAI has multiple contribution paths with different processes, IP postures, 
 
 **Examples**: a new research project module consuming the Tenant SDK; an extension to an existing approved tenant.
 
-**Where the code lives**: typically in a repository owned by the Researcher's team — which may or may not be inside the `auspexai` GitHub organization. AuspexAI does not require tenants to be hosted in the AuspexAI org; tenants can live in any repo as long as the experiment artifacts (job manifests, project module, result schema) integrate with the Tenant SDK contract. The Sentinel tenant — AuspexAI's first tenant — is a worked example.
+**Where the code lives**: typically in a repository owned by the Researcher's team — which may or may not be inside the `auspexai` GitHub organization. AuspexAI does not require tenants to be hosted in the AuspexAI org; tenants can live in any repo as long as the experiment artifacts (job manifests, project module, result schema) integrate with the Tenant SDK contract. The first tenant ships as a worked example.
 
 **License**: the Researcher's choice. The Tenant SDK boundary is designed so that consuming the SDK does *not* AGPL-infect tenant code; Researchers may license their tenant project modules under a permissive, copyleft, or proprietary license, as the science requires. (Caveat: this SDK-boundary design is being validated in Phase 1 with counsel review; until validation, treat the AGPL non-infection of tenant code as a working assumption rather than a final guarantee. See plan §5.2.)
 
