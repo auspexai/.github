@@ -1,0 +1,89 @@
+name: maintainer-roster-sync
+
+# Asserts that security/AUTHORIZED_SIGNERS.md and security/active_maintainers.json
+# agree on the set of active Maintainer GitHub logins. Prevents the two files
+# from drifting when a Maintainer is added or removed.
+#
+# Runs on every push + PR that touches either file (or this workflow itself).
+# Fast (no checkout-of-history, no network); meant to run as a required check
+# on the main branch.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "security/AUTHORIZED_SIGNERS.md"
+      - "security/active_maintainers.json"
+      - ".github/workflows/maintainer-roster-sync.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "security/AUTHORIZED_SIGNERS.md"
+      - "security/active_maintainers.json"
+      - ".github/workflows/maintainer-roster-sync.yml"
+
+jobs:
+  validate:
+    name: Roster sync check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate AUTHORIZED_SIGNERS.md ↔ active_maintainers.json sync
+        run: |
+          python3 <<'PY'
+          import json
+          import re
+          import sys
+          from pathlib import Path
+
+          md = Path("security/AUTHORIZED_SIGNERS.md").read_text()
+          js = json.loads(Path("security/active_maintainers.json").read_text())
+
+          # Extract the GitHub logins from the JSON.
+          json_logins = sorted({m["github_login"] for m in js["active"]})
+
+          # Extract logins from the markdown's "Active Maintainer roster"
+          # table. The table column 1 contains `<github_login>` in backticks
+          # (e.g., `jasongagne-git`).
+          # We narrowly scan the section between "## Active Maintainer roster"
+          # and the next ## heading, then pull backtick-wrapped values from
+          # the first column of each pipe-delimited row that's a data row.
+          section_match = re.search(
+              r"##\s+Active Maintainer roster\s*\n(.*?)(?=\n##\s+|\Z)",
+              md, re.DOTALL,
+          )
+          if not section_match:
+              print("ERROR: could not locate '## Active Maintainer roster' section in AUTHORIZED_SIGNERS.md")
+              sys.exit(1)
+          section = section_match.group(1)
+
+          md_logins = []
+          for line in section.splitlines():
+              # Skip header rows and dividers; data rows have `| `[token]`
+              # in the first cell.
+              if not line.strip().startswith("|"):
+                  continue
+              cells = [c.strip() for c in line.strip("|").split("|")]
+              if not cells:
+                  continue
+              first = cells[0]
+              # Header rows have "GitHub identity" not a backticked login.
+              m = re.match(r"^`([^`]+)`$", first)
+              if m:
+                  md_logins.append(m.group(1))
+          md_logins = sorted(set(md_logins))
+
+          if md_logins != json_logins:
+              print("ERROR: active-Maintainer rosters disagree.")
+              print(f"  AUTHORIZED_SIGNERS.md: {md_logins}")
+              print(f"  active_maintainers.json: {json_logins}")
+              sys.exit(1)
+
+          print(f"OK: {len(json_logins)} Maintainer(s) consistent across both files: {json_logins}")
+          PY

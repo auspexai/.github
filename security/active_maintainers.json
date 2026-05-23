@@ -1,0 +1,14 @@
+{
+  "$schema": "active_maintainers.schema.json",
+  "policy_canonical": "AUTHORIZED_SIGNERS.md",
+  "rationale": "Machine-readable Maintainer roster for code that needs to programmatically check whether a GitHub login is an active Maintainer (e.g., the operator-console's auth gate). All policy, narrative, rotation cadence, compromise response, Sigstore-OIDC-SAN details per Maintainer, and receipt-signing-key history lives in AUTHORIZED_SIGNERS.md. This file carries only the active-login subset of that document.",
+  "active": [
+    {
+      "github_login": "jasongagne-git",
+      "github_user_id": 246774008,
+      "active_from": "2026-04-26",
+      "notes": "Sole Maintainer. See AUTHORIZED_SIGNERS.md for Sigstore SAN + receipt-signing-key history."
+    }
+  ],
+  "as_of": "2026-05-23"
+}

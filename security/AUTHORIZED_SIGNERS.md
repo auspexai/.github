@@ -2,7 +2,9 @@
 
 The public roster of identities and keys authorized to sign on behalf of AuspexAI. Verifiers consult this file to ground their trust decisions for release artifacts and contribution receipts. See [`AuspexAI Principles & Scope` §5.16](https://github.com/auspexai) for the full signing-infrastructure design.
 
-**Last updated:** 2026-05-23 (M7b — file inaugurated as part of the worker daemon M7 packaging milestone).
+> **Machine-readable Maintainer list:** [`active_maintainers.json`](active_maintainers.json) carries the active-Maintainer subset of this document in a stable JSON shape. Code that needs to programmatically check whether a GitHub login is an active Maintainer (e.g., the operator-console's auth gate) reads that file. **All policy** — narrative, rotation cadence, compromise response, Sigstore-OIDC-SAN details per Maintainer, receipt-signing-key history — lives only in this document. When the Active Maintainer roster changes, update **both** files in the same PR; the CI workflow at `.github/workflows/maintainer-roster-sync.yml` asserts they agree.
+
+**Last updated:** 2026-05-23 (active_maintainers.json companion added).
 
 ## Two-tier trust model
 
@@ -131,5 +133,12 @@ If a coordinator receipt-signing key is compromised:
 ## Updating this file
 
 Substantial changes (adding/removing a Maintainer identity, rotating the coordinator key, marking a key compromised) follow the GOVERNANCE.md substantial-architectural-change RFC procedure. Routine annual rotation can be a fast-path PR by the current Maintainer; the rotation event itself (new public key, attestation Rekor index) carries the audit trail in Rekor regardless.
+
+**When adding/removing a Maintainer** (modifies the Active Maintainer roster table above):
+1. Edit the table in this file.
+2. Edit [`active_maintainers.json`](active_maintainers.json) to match.
+3. Commit both changes in the same PR. The `maintainer-roster-sync` CI workflow asserts the two files agree before the PR can merge.
+4. (Operator hygiene — required of every Maintainer added to the roster) Ensure the incoming Maintainer's GitHub account has: **WebAuthn passkey 2FA enabled** (phishing-resistant; an authenticator-app TOTP code alone is not sufficient); **commit signing enabled** for changes to `security/*`; **email notifications enabled** for commits to `security/` files in this repo.
+5. Operator-console eligibility includes a 24-hour cooldown for newly-added Maintainers — accessibility under the new login becomes effective 24h after the merge commit lands. Gives the existing Maintainer roster a window to revert an unauthorized addition.
 
 For the cryptographic mechanics and design rationale behind this roster, see `AuspexAI_Principles_and_Scope.md` §5.16.

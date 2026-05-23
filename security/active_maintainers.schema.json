@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AuspexAI active_maintainers",
+  "description": "Machine-readable list of AuspexAI Maintainers currently authorized for operator-console access and for issuing Sigstore attestations on behalf of the project. All policy and narrative lives in AUTHORIZED_SIGNERS.md; this file is just the active-login subset for programmatic consumption.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["policy_canonical", "active", "as_of"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Pointer to this schema file (relative path within the repo)."
+    },
+    "policy_canonical": {
+      "type": "string",
+      "const": "AUTHORIZED_SIGNERS.md",
+      "description": "Pointer to the human-readable policy doc that governs this file."
+    },
+    "rationale": {
+      "type": "string",
+      "description": "Free-form explanation of what this file is for."
+    },
+    "active": {
+      "type": "array",
+      "description": "Active Maintainers. Operator-console grants access only to logins listed here.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["github_login", "active_from"],
+        "properties": {
+          "github_login": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}$",
+            "description": "GitHub login name (the @handle, without the @)."
+          },
+          "github_user_id": {
+            "type": "integer",
+            "description": "GitHub's numeric user id — stable across login renames. Recommended; used as the authoritative match key by consumers."
+          },
+          "active_from": {
+            "type": "string",
+            "format": "date",
+            "description": "ISO 8601 date this Maintainer became active."
+          },
+          "notes": {
+            "type": "string",
+            "description": "Free-form context (e.g., role focus, cross-reference to other docs)."
+          }
+        }
+      }
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO 8601 date the roster was last updated."
+    }
+  }
+}
