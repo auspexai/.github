@@ -15,27 +15,43 @@ AuspexAI has two signing concerns that share one trust anchor — the **Maintain
 
 ## Active Maintainer roster
 
-Identities currently authorized to issue Sigstore attestations on behalf of AuspexAI. Sourced from `auspexai/.github/GOVERNANCE.md` §Maintainer roster.
+Identities currently authorized to issue Sigstore attestations on behalf of AuspexAI. Sourced from `auspexai/.github/GOVERNANCE.md` §Maintainer roster. The `Sigstore OIDC SAN` column is what verifiers match against `--certificate-identity` when the Maintainer signs a manual attestation (e.g., a coordinator receipt-signing key); this is whatever email GitHub's OAuth returns for the Maintainer at sign-time. The `Sigstore OIDC issuer` is the OAuth issuer URL the Fulcio cert carries.
 
-| GitHub identity | Active from | Active to | Notes |
-|---|---|---|---|
-| `jasongagne-git` | 2026-04-26 | *current* | Sole Maintainer. Issued first AUTHORIZED_SIGNERS roster 2026-05-23. |
+| GitHub identity | Sigstore OIDC SAN (manual attestations) | Sigstore OIDC issuer | Active from | Active to | Notes |
+|---|---|---|---|---|---|
+| `jasongagne-git` | `j2w5g6zt9r@privaterelay.appleid.com` | `https://github.com/login/oauth` | 2026-04-26 | *current* | Sole Maintainer. SAN is an Apple Private Relay forwarder — opaque by design (the real email is not exposed in the public Rekor log). Cryptographically equivalent to any other email SAN; binds to whoever controls that relay address (i.e., this GitHub account's Apple-Sign-In linkage). |
 
 Verifiers MUST treat any Sigstore attestation that asserts an identity not listed (or no longer active at the attestation's `IntegratedTime` in Rekor) as untrusted, regardless of whether the underlying cryptographic chain validates.
 
+**Release artifacts vs. manual attestations — different identity formats:** GitHub-Actions-signed releases (the worker `.deb`, etc.) carry workflow-URI SANs like `https://github.com/auspexai/worker/.github/workflows/release.yml@refs/tags/v0.1.1` — match those with `--certificate-identity-regexp` against the auspexai-org workflow pattern (see *Release-signing scope* below). Manual attestations (coordinator receipt-signing key, etc.) carry email-style SANs — match those with `--certificate-identity` against the row above.
+
 ## Coordinator receipt-signing keys
 
-Year-by-year roster of coordinator-resident Ed25519 keys authorized to sign contribution receipts. Each row corresponds to one Fulcio attestation in Rekor binding the listed public key to AuspexAI for the listed year.
+Year-by-year roster of coordinator-resident Ed25519 keys authorized to sign contribution receipts. Each row corresponds to one Fulcio attestation in Rekor binding the listed public key to AuspexAI for the listed year. The attestation document, public key, and Sigstore bundle are committed under `security/attestations/`.
 
-| Year | Public key (Ed25519, hex) | Attestation Rekor index | Status | Maintainer who attested |
-|---|---|---|---|---|
-| 2026 | *(pending §5.16 ceremony — no coordinator-side key has yet been attested)* | — | not-yet-issued | — |
+| Year | Public key (Ed25519, hex) | Attestation files | Rekor logIndex | Status | Maintainer who attested |
+|---|---|---|---|---|---|
+| 2026 | `13c3b143c995764663e1016668cb7d8d24f4497fdc18d3f24b54a9a7529df453` | [coord-receipt-key-2026.json](attestations/coord-receipt-key-2026.json) · [.bundle.json](attestations/coord-receipt-key-2026.bundle.json) · [.pub.pem](attestations/coord-receipt-key-2026.pub.pem) | [1615064195](https://search.sigstore.dev/?logIndex=1615064195) | `active` | `jasongagne-git` (SAN: `j2w5g6zt9r@privaterelay.appleid.com`) |
 
 **Status legend:**
 - `active` — currently signing receipts; valid for issuance and verification.
 - `retired` — superseded by a newer key; valid for verifying historical receipts; not used for new issuance.
 - `compromised` — flagged via incident response; receipts signed during the compromise window carry a verification-UI warning per §5.16.
 - `not-yet-issued` — slot reserved; signing ceremony pending.
+
+**Verifying the 2026 attestation locally:**
+
+```bash
+# Clone or download the three files from security/attestations/ above, then:
+cosign verify-blob \
+  --bundle coord-receipt-key-2026.bundle.json \
+  --certificate-identity 'j2w5g6zt9r@privaterelay.appleid.com' \
+  --certificate-oidc-issuer 'https://github.com/login/oauth' \
+  coord-receipt-key-2026.json
+# expect: "Verified OK"
+```
+
+The verified attestation document is the JSON file that asserts "this Ed25519 public key is AuspexAI's coordinator receipt-signing key for 2026." Verifying it confirms the Maintainer's OIDC-bound identity signed that binding, and Rekor pinned the signature at the time recorded.
 
 ## Release-signing scope
 
@@ -47,14 +63,23 @@ The Maintainer's GitHub OIDC identity (listed in the *Active Maintainer roster* 
 | `auspexai/platform` | `auspexai-coordinator-*.tar.gz`, `auspexai_coordinator-*.whl` | GitHub Actions (Sigstore-keyless via OIDC) | *(future)* |
 | `auspexai/tenant-sdk` | `auspexai_tenant_sdk-*.whl`, `auspexai-tenant-sdk-*.tar.gz` | GitHub Actions (Sigstore-keyless via OIDC) | *(future)* |
 
-Verifiers can confirm a release artifact came from AuspexAI with:
+Verifiers can confirm a release artifact came from AuspexAI with one of:
 
 ```bash
+# v0.1.x worker — separate .sig and .cert files (the deprecated cosign output form;
+# release.yml will migrate to --bundle in a future version):
 cosign verify-blob \
   --certificate-identity-regexp='^https://github\.com/auspexai/.+/\.github/workflows/.+@.+$' \
   --certificate-oidc-issuer='https://token.actions.githubusercontent.com' \
   --signature <artifact>.sig \
   --certificate <artifact>.cert \
+  <artifact>
+
+# Future versions — single .bundle.json:
+cosign verify-blob \
+  --certificate-identity-regexp='^https://github\.com/auspexai/.+/\.github/workflows/.+@.+$' \
+  --certificate-oidc-issuer='https://token.actions.githubusercontent.com' \
+  --bundle <artifact>.bundle.json \
   <artifact>
 ```
 

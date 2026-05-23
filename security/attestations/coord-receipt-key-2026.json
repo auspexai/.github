@@ -1,0 +1,25 @@
+{
+  "binding_type": "auspexai-coordinator-receipt-signing-key",
+  "principles_doc_section": "5.16",
+  "subject": {
+    "organization": "AuspexAI",
+    "github_org": "https://github.com/auspexai",
+    "domain": "auspexai.network",
+    "coordinator_url": "https://coord.auspexai.network"
+  },
+  "key": {
+    "algorithm": "ed25519",
+    "public_key_hex": "13c3b143c995764663e1016668cb7d8d24f4497fdc18d3f24b54a9a7529df453",
+    "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAE8OxQ8mVdkZj4QFmaMt9jST0SX/cGNPyS1Spp1Kd9FM=\n-----END PUBLIC KEY-----\n"
+  },
+  "valid_year": 2026,
+  "issued_at": "2026-05-23",
+  "issued_by": {
+    "role": "Maintainer",
+    "github_identity_expected": "jasongagne-git"
+  },
+  "rotation_policy": "Annual per §5.16; old key remains valid for verifying historical receipts forever, status flipped to 'retired' in AUTHORIZED_SIGNERS.md on rotation.",
+  "compromise_response": "Per §5.16 — Maintainer cuts a new coordinator key, signs a new Fulcio attestation, marks this row 'compromised' in AUTHORIZED_SIGNERS.md with discovery date.",
+  "authorized_signers_url": "https://github.com/auspexai/.github/blob/main/security/AUTHORIZED_SIGNERS.md",
+  "principles_doc_url": "Documentation/AuspexAI/v0.1.0/AuspexAI_Principles_and_Scope.md (private), public surface lives on auspexai.network"
+}
