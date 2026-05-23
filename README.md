@@ -8,6 +8,8 @@ This repository holds organization-wide governance, conduct, and contribution fi
 - **[`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md)** — community conduct standards (Contributor Covenant 2.1) plus AuspexAI-specific reporting procedure and escalation pathway when a Maintainer is the subject of a complaint
 - **[`CONTRIBUTING.md`](CONTRIBUTING.md)** — how to contribute: contribution paths, DCO sign-off mechanics, PR workflow, RFC requirement for substantial architectural changes
 - **[`RESEARCH_ETHICS_POLICY.md`](RESEARCH_ETHICS_POLICY.md)** — top-level governance document for AI safety research conducted on the AuspexAI network: dual-use distinction, permitted and prohibited research, containment requirements, ethics review process
+- **[`BETA_TERMS.md`](BETA_TERMS.md)** — plain-language closed-beta Terms of Participation: what the worker does, what data we store about you, receipt permanence, withdrawal, no-warranty. Bridge document; full counsel-reviewed Terms of Participation lands with Phase 3 public launch
+- **[`security/AUTHORIZED_SIGNERS.md`](security/AUTHORIZED_SIGNERS.md)** — public roster of identities and keys authorized to sign on behalf of AuspexAI (release artifacts + contribution receipts); the file verifiers consult to ground trust decisions per §5.16
 - **[`LICENSE`](LICENSE)** — AGPL-3.0 (this repository; per-repo licenses vary)
 - **[`profile/README.md`](profile/README.md)** — the org profile page rendered at https://github.com/auspexai
 
