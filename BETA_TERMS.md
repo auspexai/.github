@@ -128,6 +128,7 @@ This beta document is intentionally short and plain-language. If anything here s
 - [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) — community conduct standards
 - [`RESEARCH_ETHICS_POLICY.md`](RESEARCH_ETHICS_POLICY.md) — what research can run on the network
 - [`security/AUTHORIZED_SIGNERS.md`](security/AUTHORIZED_SIGNERS.md) — the signing roster you'd consult to verify receipts you've earned
+- [`TENANT_TERMS.md`](TENANT_TERMS.md) — the tenant/researcher-facing counterpart to this document (results custody, retention)
 - [`auspexai/worker`](https://github.com/auspexai/worker) — the worker source code (AGPL-3.0)
 
 ---
