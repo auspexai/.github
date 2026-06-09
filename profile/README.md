@@ -6,7 +6,7 @@ A volunteer-driven, open-source distributed compute network being built for AI s
 
 ## Status
 
-**Phase 0 — Foundation.** Project bootstrap underway. Code begins in Phase 1, starting with a coordinator daemon, tenant SDK, multi-platform worker installer, and an end-to-end validation experiment with the first tenant (a week-long continuous multi-agent run). Phase 2 opens trusted-beta participation; Phase 3 opens to public volunteers.
+**Phase 2 — Closed beta.** The coordinator daemon, tenant SDK, and multi-platform worker installer are built and running (the live coordinator is up at `coord.auspexai.network`); the operator console and public receipt-verifier are live. Current focus is the first end-to-end tenant validation (a continuous multi-agent run) before opening trusted-beta participation more widely. Phase 3 opens to public volunteers.
 
 **On scale.** Network compute capacity will be directly proportional to the volunteer base. We are starting from zero — every volunteer who joins is part of what makes the next experiment possible.
 

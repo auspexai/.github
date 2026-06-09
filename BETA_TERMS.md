@@ -61,9 +61,9 @@ Every work unit your worker completes produces a **signed receipt**. The receipt
 - Stored in the coordinator's database
 - Available to the tenant that submitted the work
 - Verifiable by anyone (the coordinator's signing key is publicly attested in [`security/AUTHORIZED_SIGNERS.md`](security/AUTHORIZED_SIGNERS.md))
-- Recorded in the [Sigstore Rekor](https://search.sigstore.dev) public transparency log — **immutably and forever**
+- Anchored in the [Sigstore Rekor](https://search.sigstore.dev) public transparency log: each experiment's **result-set attestation** (the Merkle root that commits to the receipts in that run) is recorded in Rekor, and the coordinator's signing key is itself Rekor-attested — so a receipt's provenance is **publicly and permanently verifiable**. (Receipts inherit Rekor immutability through that one per-experiment anchor rather than each receipt being its own Rekor entry.)
 
-**What this means for withdrawal:** when you run `auspexai-worker withdraw`, your local state is purged AND the coordinator severs the binding between your worker pubkey and your account. The **content** of receipts you previously earned stays in the transparency log. The **attribution** to your identity is removed.
+**What this means for withdrawal:** when you run `auspexai-worker withdraw`, your local state is purged AND the coordinator severs the binding between your worker pubkey and your account. The **committed record** of receipts you previously earned (via the per-experiment attestation in the transparency log) is permanent. The **attribution** to your identity is removed.
 
 If you can't accept this permanence — and there are legitimate reasons not to: research-record permanence is incompatible with some volunteer postures — please **do not enroll above T0 anonymous**. T0 receipts don't bind to any account, so there's no person-identifying linkage to sever.
 

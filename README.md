@@ -12,10 +12,7 @@ This repository holds organization-wide governance, conduct, and contribution fi
 - **[`security/AUTHORIZED_SIGNERS.md`](security/AUTHORIZED_SIGNERS.md)** — public roster of identities and keys authorized to sign on behalf of AuspexAI (release artifacts + contribution receipts); the file verifiers consult to ground trust decisions per §5.16
 - **[`LICENSE`](LICENSE)** — AGPL-3.0 (this repository; per-repo licenses vary)
 - **[`profile/README.md`](profile/README.md)** — the org profile page rendered at https://github.com/auspexai
-
-## Forthcoming
-
-- `SECURITY.md` — security disclosure process and response timelines (Phase 1)
+- **[`SECURITY.md`](SECURITY.md)** — security disclosure process and response timelines
 
 ## Note on GitHub's community-standards UI
 

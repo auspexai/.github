@@ -64,7 +64,7 @@ The governing principle is **collection-anchored**: once you collect the export 
 
 ## 5. Receipts are permanent (and so is the proof-of-transfer)
 
-Every quorum-accepted work unit produces a signed receipt that is recorded in the [Sigstore Rekor](https://search.sigstore.dev) public transparency log — **immutably and forever**. The proof-of-transfer records from §3 are likewise permanent. This is what lets your experiment remain *provably-ran and provably-delivered* long after the payload bytes have aged off. If permanent, publicly-verifiable records of your experiments' execution are incompatible with your research posture, raise it before onboarding.
+Every quorum-accepted work unit produces a signed receipt, and each completed experiment produces a **result-set attestation** — a Merkle root committing to that run's receipts — that is recorded in the [Sigstore Rekor](https://search.sigstore.dev) public transparency log **permanently** (the coordinator's signing key is itself Rekor-attested). Receipts inherit that public-transparency immutability through the per-experiment attestation. The proof-of-transfer records from §3 are likewise permanent. This is what lets your experiment remain *provably-ran and provably-delivered* long after the payload bytes have aged off. If permanent, publicly-verifiable records of your experiments' execution are incompatible with your research posture, raise it before onboarding.
 
 Worker identities in receipts are **pseudonymous** (a worker public key, and for identity-bound workers an opaque GitHub user ID — never an email or real name). You agree not to attempt to deanonymize volunteers from receipt data.
 
