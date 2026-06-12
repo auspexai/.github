@@ -92,6 +92,14 @@ Capabilities:
 
 Maintainers hold themselves to the same DCO and CoC standards as any contributor. Maintainers are subject to recusal under §6 and to CoC accountability per the escalation pathway in `CODE_OF_CONDUCT.md`.
 
+**Release authority on fleet-installed repositories** *(added 2026-06-12)*
+
+Publishing a GitHub release on a fleet-installed repository (today: `auspexai/worker`) is not merely a packaging act — it is the **fleet-announce trigger**: the coordinator's release webhook records the published release, and every volunteer's worker surfaces the update banner on its next heartbeat. The two-human trust gate (principles doc §9 #46) is: *a Maintainer gates what is offered to the fleet; each volunteer gates what is installed on their machine*. Release publication is therefore the first half of that gate, and the authority to exercise it is enumerated here rather than implied by repository access:
+
+- **Only Maintainers may publish releases (including prereleases) on fleet-installed repositories.** GitHub write access alone does not confer this authority. A contributor granted repo write access who is not a Maintainer must not publish releases, and as the Maintainer team grows beyond one, repository protections (release/tag restrictions, environments) should enforce this boundary mechanically, not just socially.
+- The coordinator's webhook filters (unknown repos and prereleases ignored; malformed `Fulfils:` linkage skipped-and-audited) are defense-in-depth, **not** the authority boundary — this paragraph is the authority boundary.
+- Every fleet-announced release is audited coordinator-side, and the release description is the volunteer-facing announcement; Maintainers write it for that audience.
+
 There is no standing oversight role (Steering committee or Ombud) at Phase 0–3. CoC accountability when a Maintainer is the subject of a complaint is handled via the escalation pathway in `CODE_OF_CONDUCT.md`. Cross-role tiebreaking is deferred per §4.4. Whether to add an Ombud, Steering committee, or equivalent oversight role is reassessed at Phase 4 entry per §10.
 
 ---
@@ -288,6 +296,7 @@ Amendments that would conflict with the project's stated durable commitment (§2
 |---------|------|---------|
 | v1 | 2026-04-27 | Initial. Role taxonomy (Volunteer / Platform Contributor / Researcher / Approver / Maintainer), decision rules, recruitment triggers, COI rules, transparency obligations, amendment process. License: AGPL-3.0; CoC: Contributor Covenant 2.1; Contribution: DCO. No standing oversight roles (Steering, Ombud) at Phase 0–3 — deferred to Phase 4 reassessment. CoC accountability when Maintainer is subject of a complaint handled via escalation pathway in `CODE_OF_CONDUCT.md`. |
 | v1.1 | 2026-05-17 | **Monetization stance unbundled and narrowed.** §2 mission statement rewritten to separate one durable commitment (no crypto-economy layer) from operational-model statements that are not structurally protected (volunteer-compensation model, project-level revenue posture, donate-only operating posture). §8.5 narrowed: structurally-protected items reduced from three ("introducing token incentives, monetizing volunteer compute, or removing the donate-only constraint") to one ("introducing a crypto-economy layer"); all other operational-model questions become normal §8.2 amendments. Pre-revision form overclaimed by committing the project to forever-no-compensation and forever-no-revenue stances the maintainer cannot honestly make on the project's behalf. Source of truth for the revision: `Documentation/AuspexAI/v0.1.0/AuspexAI_Principles_and_Scope.md` §4 #7 (revised 2026-05-17). |
+| v1.2 | 2026-06-12 | **§3.5: release authority on fleet-installed repositories made explicit.** The coordinator's direct-announce release webhook made "GitHub write access to `auspexai/worker`" operationally equal to fleet-announce authority; codified as a Maintainer-only capability before a second Maintainer joins (external design-review recommendation, 2026-06-11). Webhook filters named as defense-in-depth, not the authority boundary. Routine amendment (§8.1). |
 
 ---
 
