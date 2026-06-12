@@ -8,8 +8,14 @@ front door: from nothing to a bound research tenant in four steps.
 ## 1. Install
 
 ```bash
-pip install auspexai-researcher-dashboard   # pulls the auspexai-tenant SDK
+pipx install auspexai-researcher-dashboard   # pulls the auspexai-tenant SDK
+pipx ensurepath                              # once, so the commands are on PATH
 ```
+
+(`pipx` keeps CLI tools in their own environments and handles PATH for you —
+`pip install --user auspexai-researcher-dashboard` also works, but you'll
+likely need to add `$(python3 -m site --user-base)/bin` to your PATH
+yourself.)
 
 That's the SDK (keys, submission, the evidence verify chain) plus your local
 dashboard. Releases are Sigstore-signed; verify-before-install instructions
