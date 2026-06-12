@@ -28,8 +28,12 @@ auspexai-tenant apply
 
 This signs you in with GitHub (device flow — you'll confirm a code in your
 browser), creates your research keypair locally if you don't have one, and
-submits your application (name, affiliation, a short research summary)
-signed by that key. Your private key never leaves your machine; the
+submits your application signed by that key.
+
+**You apply once.** The tenant id you choose is your permanent research
+identity — every experiment you ever run lives under it, with no further
+applications. (Genuinely separate research programs can apply for additional
+tenancies under the same GitHub account; each gets its own full review.) Your private key never leaves your machine; the
 application itself proves you hold it. No key material to copy-paste.
 
 Track it any time:
