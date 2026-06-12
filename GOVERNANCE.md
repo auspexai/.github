@@ -100,6 +100,13 @@ Publishing a GitHub release on a fleet-installed repository (today: `auspexai/wo
 - The coordinator's webhook filters (unknown repos and prereleases ignored; malformed `Fulfils:` linkage skipped-and-audited) are defense-in-depth, **not** the authority boundary — this paragraph is the authority boundary.
 - Every fleet-announced release is audited coordinator-side, and the release description is the volunteer-facing announcement; Maintainers write it for that audience.
 
+**Release authority on researcher-installed repositories** *(added 2026-06-12)*
+
+The same boundary applies, for the same reason, to repositories whose packages researchers install on their own machines (today: `auspexai/tenant-sdk` and `auspexai/researcher-dashboard`). These packages are the researcher's **verifier** — the tooling that checks signatures, attestations, and transparency-log inclusion — so their supply chain is part of the trust claim itself: a compromised verifier defeats every guarantee it exists to check.
+
+- **Only Maintainers may publish releases on researcher-installed repositories.** This includes package-index publication (PyPI): publishing rides the tagged-release workflow via trusted publishing (GitHub OIDC, no long-lived credentials), so the release gate and the index gate are the same gate.
+- Release artifacts are Sigstore-signed by the release workflow, matching the fleet-installed posture; the PyPI publisher configuration and any signing identities are Maintainer-administered.
+
 There is no standing oversight role (Steering committee or Ombud) at Phase 0–3. CoC accountability when a Maintainer is the subject of a complaint is handled via the escalation pathway in `CODE_OF_CONDUCT.md`. Cross-role tiebreaking is deferred per §4.4. Whether to add an Ombud, Steering committee, or equivalent oversight role is reassessed at Phase 4 entry per §10.
 
 ---
@@ -297,6 +304,7 @@ Amendments that would conflict with the project's stated durable commitment (§2
 | v1 | 2026-04-27 | Initial. Role taxonomy (Volunteer / Platform Contributor / Researcher / Approver / Maintainer), decision rules, recruitment triggers, COI rules, transparency obligations, amendment process. License: AGPL-3.0; CoC: Contributor Covenant 2.1; Contribution: DCO. No standing oversight roles (Steering, Ombud) at Phase 0–3 — deferred to Phase 4 reassessment. CoC accountability when Maintainer is subject of a complaint handled via escalation pathway in `CODE_OF_CONDUCT.md`. |
 | v1.1 | 2026-05-17 | **Monetization stance unbundled and narrowed.** §2 mission statement rewritten to separate one durable commitment (no crypto-economy layer) from operational-model statements that are not structurally protected (volunteer-compensation model, project-level revenue posture, donate-only operating posture). §8.5 narrowed: structurally-protected items reduced from three ("introducing token incentives, monetizing volunteer compute, or removing the donate-only constraint") to one ("introducing a crypto-economy layer"); all other operational-model questions become normal §8.2 amendments. Pre-revision form overclaimed by committing the project to forever-no-compensation and forever-no-revenue stances the maintainer cannot honestly make on the project's behalf. Source of truth for the revision: `Documentation/AuspexAI/v0.1.0/AuspexAI_Principles_and_Scope.md` §4 #7 (revised 2026-05-17). |
 | v1.2 | 2026-06-12 | **§3.5: release authority on fleet-installed repositories made explicit.** The coordinator's direct-announce release webhook made "GitHub write access to `auspexai/worker`" operationally equal to fleet-announce authority; codified as a Maintainer-only capability before a second Maintainer joins (external design-review recommendation, 2026-06-11). Webhook filters named as defense-in-depth, not the authority boundary. Routine amendment (§8.1). |
+| v1.3 | 2026-06-12 | **§3.5: release authority extended to researcher-installed repositories** (`tenant-sdk`, `researcher-dashboard`), including PyPI publication via trusted publishing on the same tagged-release gate. Rationale: these packages are the researcher's verifier — their supply chain is part of the trust claim. Closes the symmetry gap left by v1.2. Maintainer-ratified in session 2026-06-12; routine amendment (§8.1). |
 
 ---
 
