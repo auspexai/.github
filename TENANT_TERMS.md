@@ -24,6 +24,14 @@ You are NOT agreeing to:
 - Let other tenants see your private experiment data (results and per-experiment activity are tenant-scoped)
 - Cede control over which volunteers may see your identity (volunteer/worker identities are pseudonymous to you; you are pseudonymous to them)
 
+### Tenancies and your account
+
+Your tenant identity is permanent — you apply once, and every experiment you
+run lives under it. A single GitHub account may hold **multiple tenancies**
+for genuinely separate research programs; each application receives its own
+full review. Your account is the single accountability root: account-level
+enforcement (including suspension) reaches **all** tenancies linked to it.
+
 ## 2. Getting your results back
 
 Your experiment produces two kinds of output, retrieved through the researcher dashboard, the `auspexai-tenant` SDK/CLI, or the coordinator API directly:
