@@ -305,6 +305,7 @@ Amendments that would conflict with the project's stated durable commitment (§2
 | v1.1 | 2026-05-17 | **Monetization stance unbundled and narrowed.** §2 mission statement rewritten to separate one durable commitment (no crypto-economy layer) from operational-model statements that are not structurally protected (volunteer-compensation model, project-level revenue posture, donate-only operating posture). §8.5 narrowed: structurally-protected items reduced from three ("introducing token incentives, monetizing volunteer compute, or removing the donate-only constraint") to one ("introducing a crypto-economy layer"); all other operational-model questions become normal §8.2 amendments. Pre-revision form overclaimed by committing the project to forever-no-compensation and forever-no-revenue stances the maintainer cannot honestly make on the project's behalf. Source of truth for the revision: `Documentation/AuspexAI/v0.1.0/AuspexAI_Principles_and_Scope.md` §4 #7 (revised 2026-05-17). |
 | v1.2 | 2026-06-12 | **§3.5: release authority on fleet-installed repositories made explicit.** The coordinator's direct-announce release webhook made "GitHub write access to `auspexai/worker`" operationally equal to fleet-announce authority; codified as a Maintainer-only capability before a second Maintainer joins (external design-review recommendation, 2026-06-11). Webhook filters named as defense-in-depth, not the authority boundary. Routine amendment (§8.1). |
 | v1.3 | 2026-06-12 | **§3.5: release authority extended to researcher-installed repositories** (`tenant-sdk`, `researcher-dashboard`), including PyPI publication via trusted publishing on the same tagged-release gate. Rationale: these packages are the researcher's verifier — their supply chain is part of the trust claim. Closes the symmetry gap left by v1.2. Maintainer-ratified in session 2026-06-12; routine amendment (§8.1). |
+| v1.4 | 2026-06-19 | **New §11 "Contestation & appeals."** Writes the recourse path for adverse actions (declined application, demotion, suspension, worker quarantine — including the new automated quarantine on a signed containment violation) into the public record, with the companion tenant-facing section in `TENANT_TERMS.md` §8. Encodes the standing principles (lost only by provable misconduct; divergence never adverse; a human hears every contest) and the single-Maintainer→expansion authority staging. Closes the recourse gap opened by the containment-violation auto-quarantine; the one documentation prerequisite for tenant-#2. Maintainer-ratified 2026-06-19; substantive amendment (§8.2). |
 
 ---
 
@@ -321,6 +322,16 @@ The complete governance shape is reassessed at Phase 4 entry. Specific questions
 - Has the cross-role tiebreaking mechanism (§4.4) been needed, and if so, has the deferred-amendment approach worked?
 
 The reassessment is conducted publicly; outcome is recorded as a substantive amendment per §8.2.
+
+## 11. Contestation & appeals
+
+Adverse actions — declining an application, demoting or suspending an account, or quarantining a worker (including the automated quarantine on a signed containment violation) — are contestable. Every such action is taken for a **recorded reason** (§7) and may be appealed.
+
+**Standard of action.** Standing is reduced only by **provable misconduct** — a bad signature, a served-weights or containment mismatch, or a Terms breach — never by statistical dissent or divergence (the firewall-#1 corollary). An automated quarantine is a *provisional, reversible* response to a signed admission of non-compliance; it is always subject to human review on request.
+
+**Who hears it.** While the project has a single Maintainer, the Maintainer hears contests, recusing under §6.2/§6.3 where conflicted, and answers on the record. On reaching a second Maintainer or a staffed Approver pool (§4, §5), a contest is heard by someone **other than the original decision-maker**: account and worker actions by a non-deciding Maintainer, tenant-application declines by the Approver pool. The §4.4 cross-role tiebreak resolves on the same trigger.
+
+**Process.** File via **governance@auspexai.network**, citing the recorded reason; you receive a written upholding-or-reversal decision (target: five business days, Phase-1 best-effort), itself entered into the public record (§7). There is no retaliation for a good-faith contest.
 
 ---
 

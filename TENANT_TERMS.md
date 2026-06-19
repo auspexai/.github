@@ -56,7 +56,7 @@ The AuspexAI coordinator is built to **deliver** your results to you, not to be 
 
 **Keep your downloaded bundle.** After collection we do not guarantee that the coordinator still holds your result payloads — by design, it may discard them once you hold the authoritative copy. The standing doctrine is **re-verify forever, never re-deliver**: the network permanently retains the hashes, receipts, and attestations needed to re-verify any bundle you hold (and the public Rekor log re-verifies the attestation even without us), but once payloads have aged off they are gone — collection is custody transfer, and the network is not an archive.
 
-> **Beta-stage legal note.** This clause states the **operational** custody model the coordinator already enforces; it is **not** the final legal instrument. Formal data-controller / data-processor designation under GDPR and CCPA, and counsel-reviewed liability language, are part of the Phase-3 full Terms of Participation (§8). If the precise legal allocation of responsibility matters to your organization before Phase 3, email **contact@auspexai.network** — we'd rather have that conversation up front.
+> **Beta-stage legal note.** This clause states the **operational** custody model the coordinator already enforces; it is **not** the final legal instrument. Formal data-controller / data-processor designation under GDPR and CCPA, and counsel-reviewed liability language, are part of the Phase-3 full Terms of Participation (§9). If the precise legal allocation of responsibility matters to your organization before Phase 3, email **contact@auspexai.network** — we'd rather have that conversation up front.
 
 ## 4. Retention and age-off — collection-anchored
 
@@ -84,11 +84,28 @@ There is exactly one case in which Auspex retains your actual result **data** af
 
 The AuspexAI network is alpha software run as a small lab deployment. We cannot promise that the coordinator stays available, that experiments complete on any schedule, that volunteer-computed results are correct (quorum/replication mitigate but do not eliminate bad results — that is your experiment design's responsibility), or that result-retrieval schemas won't change across versions. You run experiments on the network **at your own risk**. Report problems at https://github.com/auspexai or email **contact@auspexai.network**.
 
-## 8. What changes in Phase 3
+## 8. Contesting a decision
 
-The full Terms of Participation arrives at public launch (Phase 3), counsel-reviewed, and supersedes this bridge document. It will add: explicit GDPR/CCPA data-controller / data-processor designation for the custody model in §3, a companion privacy policy, formal liability language, and a structured grievance/escalation procedure. This beta document is intentionally short and plain-language.
+Most of what the network does to a result is mechanical and self-correcting: a result that fails an integrity check — a bad worker signature, a served-model-digest mismatch, or a sandbox-containment mismatch — is simply refused, and you fix it and resubmit. That is not a penalty and needs no appeal.
 
-## 9. Cross-references
+A few actions *do* affect your standing, and **you can contest any of them**:
+
+- a **declined application**;
+- an **account demotion or suspension**;
+- a **worker quarantine** — including the *automatic* quarantine that follows a result signed as having run under weaker containment than the experiment required.
+
+Two commitments come first:
+
+- **You are never penalized for disagreeing.** If your result diverges from others', that costs you nothing — it is recorded as a research finding and earns standing equally. If you ever believe an action was taken because your work *diverged*, treat it as a bug and tell us; it is not a legitimate penalty.
+- **Standing is lost only for provable misconduct** — a bad signature, a model- or containment-mismatch, or a breach of these Terms — and **a human reviews every contest.** The system never decides its own appeals; an automatic quarantine is a provisional, reversible response, always subject to human review on request.
+
+To contest, email **governance@auspexai.network** and reference the action — its recorded reason is shown to you, so cite it. A person (recused if they have any conflict) reviews it and replies in writing, normally within five business days, either upholding the decision with its reason or reversing it. Quarantines and suspensions are reversible. Filing a good-faith contest is never itself grounds for any action against you.
+
+## 9. What changes in Phase 3
+
+The full Terms of Participation arrives at public launch (Phase 3), counsel-reviewed, and supersedes this bridge document. It will add: explicit GDPR/CCPA data-controller / data-processor designation for the custody model in §3, a companion privacy policy, formal liability language, and a structured grievance/escalation procedure that formalizes the beta contestation path in §8. This beta document is intentionally short and plain-language.
+
+## 10. Cross-references
 
 - [`BETA_TERMS.md`](BETA_TERMS.md) — the volunteer/worker-facing counterpart to this document
 - [`RESEARCH_ETHICS_POLICY.md`](RESEARCH_ETHICS_POLICY.md) — what research may run on the network (binds tenants)

@@ -49,7 +49,11 @@ A Maintainer reviews your application against the
 and what it refuses is public, as is [how decisions are made](GOVERNANCE.md).
 Approval creates your tenant and binds your key in one step; a decline always
 carries a written reason. Applications are not public records, but every
-decision is audited.
+decision is audited. If a decision goes against you — a declined application, or
+later a demotion, suspension, or worker quarantine — you can **contest it**:
+email **governance@auspexai.network** citing the reason, and a human reviews it
+(see *Contesting a decision* in [TENANT_TERMS.md](TENANT_TERMS.md) §8 and
+[GOVERNANCE.md](GOVERNANCE.md) §11).
 
 ## 4. Confirm and run
 

@@ -110,6 +110,8 @@ You are bound by the project [Code of Conduct](CODE_OF_CONDUCT.md). Specifically
 
 Network-level abuse is handled through technical enforcement (revocation, ban, trust-tier demotion), not Code-of-Conduct processes. CoC processes apply to community interaction (Discussions, issues, PRs, etc.).
 
+**Contesting an enforcement action.** Technical enforcement — worker **quarantine** (manual, or the automatic quarantine that follows a result signed as having run under weaker containment than required), demotion, suspension, or ban — is **contestable**. Standing is lost only for *provable misconduct*, never for your results disagreeing with quorum (divergence is recorded as a finding, not a fault). A **human** reviews every contest. To appeal, email **governance@auspexai.network** citing the recorded reason; see the full path in [`GOVERNANCE.md`](GOVERNANCE.md) §11 and [`TENANT_TERMS.md`](TENANT_TERMS.md) §8.
+
 ## 8. What changes in Phase 3
 
 The full Terms of Participation arrives at public launch (Phase 3) and includes:
