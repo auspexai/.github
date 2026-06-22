@@ -1,7 +1,7 @@
 # RFC 0001 — Promotion gate: standing certification of curated starter profiles
 
-- **Status:** Proposed (open for comment)
-- **Comment period:** 2026-06-21 → 2026-07-21 (30 days, per [`GOVERNANCE.md`](../GOVERNANCE.md) §8.2 / [`RESEARCH_ETHICS_POLICY.md`](../RESEARCH_ETHICS_POLICY.md) §8)
+- **Status:** **Adopted (in force) — open for refinement.** The promotion-gate architecture is deployed and enforced on AuspexAI's coordinator as of 2026-06-22, so the Maintainer has adopted §6.7 internally; it governs the running system now. This RFC stays open **not** to re-decide the core, but to gather refinements and surface new requirements as real researchers use the on-ramp. The text folds into `RESEARCH_ETHICS_POLICY.md` on `main` once the refinement settles.
+- **Comment period:** open-ended (refinement). _(Original 30-day window: 2026-06-21 → 2026-07-21, per [`GOVERNANCE.md`](../GOVERNANCE.md) §8.2 / [`RESEARCH_ETHICS_POLICY.md`](../RESEARCH_ETHICS_POLICY.md) §8.)_
 - **Amends:** `RESEARCH_ETHICS_POLICY.md` — adds **§6.7** and a **§10 v1.2** changelog entry (the exact text is the diff in the pull request that carries this RFC)
 - **Bar:** substantive §8 amendment (simple §8 process; this adds no prohibited-content category, so the §4 60-day bar does not apply)
 
