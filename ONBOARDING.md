@@ -8,7 +8,7 @@ front door: from nothing to a bound research tenant in four steps.
 ## 1. Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/auspexai/researcher-dashboard/main/install.sh | bash
+curl -fsSL https://getresearcher.auspexai.network | bash
 ```
 
 One command: dedicated environment, both packages from PyPI, commands on
