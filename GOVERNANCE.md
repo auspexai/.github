@@ -18,7 +18,7 @@ Adjacent documents:
 
 - [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) — community standards and CoC enforcement procedure
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) — how to make contributions, including DCO sign-off mechanics
-- `SECURITY.md` — security disclosure process (forthcoming, Phase 1)
+- [`SECURITY.md`](SECURITY.md) — security disclosure process
 
 For the project's strategic direction, mission, and roadmap, see the AuspexAI Principles and Scope working document.
 
@@ -36,7 +36,7 @@ A single person can hold multiple roles at once. Roles are capability bits, not 
 
 ### 3.1 Volunteer
 
-A person running an AuspexAI Worker on their own machine, donating compute. Trust tier T0–T4 governs work eligibility and quorum weight (defined in the AuspexAI Worker documentation). A Volunteer at any tier is bound by this governance and the Code of Conduct insofar as their actions affect AuspexAI community spaces. Conduct on the Worker network itself is additionally governed by the Volunteer Terms of Participation (forthcoming, Phase 2).
+A person running an AuspexAI Worker on their own machine, donating compute. Trust tier T0–T3 governs work eligibility and quorum weight (defined in the AuspexAI Worker documentation). A Volunteer at any tier is bound by this governance and the Code of Conduct insofar as their actions affect AuspexAI community spaces. Conduct on the Worker network itself is additionally governed by the Volunteer Terms of Participation (published as [`BETA_TERMS.md`](BETA_TERMS.md)).
 
 ### 3.2 Platform Contributor
 
@@ -306,6 +306,7 @@ Amendments that would conflict with the project's stated durable commitment (§2
 | v1.2 | 2026-06-12 | **§3.5: release authority on fleet-installed repositories made explicit.** The coordinator's direct-announce release webhook made "GitHub write access to `auspexai/worker`" operationally equal to fleet-announce authority; codified as a Maintainer-only capability before a second Maintainer joins (external design-review recommendation, 2026-06-11). Webhook filters named as defense-in-depth, not the authority boundary. Routine amendment (§8.1). |
 | v1.3 | 2026-06-12 | **§3.5: release authority extended to researcher-installed repositories** (`tenant-sdk`, `researcher-dashboard`), including PyPI publication via trusted publishing on the same tagged-release gate. Rationale: these packages are the researcher's verifier — their supply chain is part of the trust claim. Closes the symmetry gap left by v1.2. Maintainer-ratified in session 2026-06-12; routine amendment (§8.1). |
 | v1.4 | 2026-06-19 | **New §11 "Contestation & appeals."** Writes the recourse path for adverse actions (declined application, demotion, suspension, worker quarantine — including the new automated quarantine on a signed containment violation) into the public record, with the companion tenant-facing section in `TENANT_TERMS.md` §8. Encodes the standing principles (lost only by provable misconduct; divergence never adverse; a human hears every contest) and the single-Maintainer→expansion authority staging. Closes the recourse gap opened by the containment-violation auto-quarantine; the one documentation prerequisite for tenant-#2. Maintainer-ratified 2026-06-19; substantive amendment (§8.2). |
+| v1.5 | 2026-06-26 | **Documentation currency (A9 internal audit — AUD-15/16/17; routine §8.1 amendment, no substantive governance change).** §1: `SECURITY.md` and the Volunteer Terms of Participation (`BETA_TERMS.md`) are now shipped, so the "forthcoming" qualifiers are dropped and both are linked. §3.1 (Volunteer): the worker trust ladder is corrected from **T0–T4 to T0–T3** (T4 was removed pre-launch; the deployed `TrustTier` tops at T3). Filed the public **`PROVISIONAL_APPROVALS.md`** log that §5.2/§7 require — the first provisional approval (`vigiles-lab`, solo-approved under the vacant Approver pool on 2026-06-12) had occurred, so the log was due. _Version note: the concurrently-open RFC 0002 (§11 contestation extension) and RFC 0001 (§6.7 promotion gate) also draft against this version line; final numbering reconciles when those RFCs fold to `main`._ |
 
 ---
 
