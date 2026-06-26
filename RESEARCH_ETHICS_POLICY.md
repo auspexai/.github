@@ -104,9 +104,21 @@ Direct publication of raw harmful outputs is not permitted as a default. Excepti
 - Audit logs record who accessed what, when, and for what purpose
 - The Tenant SDK and platform features are designed to support these requirements (see Plan §5.12); Researchers are responsible for using the supporting features correctly
 
-### 5.4 Worker tier alignment
+### 5.4 Tier alignment
 
-Experiments handling sensitive outputs are routed only to workers at trust tiers appropriate to the sensitivity. Capability-emergence studies and similar high-sensitivity research are routed to T2+ workers; less-sensitive drift research can use T1+; T0 anonymous workers do not handle research-internal harmful outputs (T0 work is replicated and quorum-checked, not assigned to sensitive outputs).
+Both sides of an experiment — the workers that **compute** it and the Researcher who **proposes** it — are aligned to its risk.
+
+**Worker alignment.** Experiments handling sensitive outputs are routed only to workers at trust tiers appropriate to the sensitivity. Capability-emergence studies and similar high-sensitivity research are routed to T2+ workers; less-sensitive drift research can use T1+; T0 anonymous workers do not handle research-internal harmful outputs (T0 work is replicated and quorum-checked, not assigned to sensitive outputs).
+
+**Researcher alignment.** *(added 2026-06-24, RFC 0002)* A Researcher's research-standing tier (R0–R3) gates which dual-use risk classes (§6.1) they may **propose, and supply their own experiment code for** — mirroring how worker tiers gate which sensitivities a worker may handle:
+
+- **R1 (identity-verified)** may run only the curated, certified reference experiments (§6.7) — no Researcher-supplied code — and only designs classified **low-risk**.
+- **R2 (established)** may additionally bring and run **their own experiment code** ("BYOT") for **low- and medium-risk** designs, under STRICT containment.
+- **R3 (trusted)** is additionally **eligible** to propose **high-risk** designs.
+
+This alignment is **necessary, never sufficient.** Research-standing confers only eligibility to *propose*; every experiment is still classified and authorized on its own merits under the §6 review. High-risk designs continue to require the §6.3 elevated review (Approver-pool unanimity; external advisor where warranted), and direct publication of raw harmful outputs continues to require unanimity and documented rationale under §5.2 — research-standing places a **floor beneath** those gates, it does not relax them. Designs prohibited under §4 remain prohibited **at every tier**.
+
+Research-standing promotions (R1→R2 by ethics review; R2→R3 by Maintainer vetting) are **human decisions recorded with reasons**; the standing record earns a Researcher the *review*, never the promotion itself. A research-standing demotion or a revocation of own-code ("BYOT") eligibility is an **adverse action**, contestable under [`GOVERNANCE.md`](GOVERNANCE.md) §11 (Contestation & appeals) — and, per that section's standard, research-standing is reduced **only by provable misconduct, never by a divergent or dissenting result** (the firewall-#1 corollary).
 
 ### 5.5 Incident response
 
@@ -312,6 +324,7 @@ This policy does not cover:
 | v1 | 2026-04-27 | Initial. Establishes dual-use distinction, permitted/prohibited research types, containment requirements, application and review process, periodic review for long-running experiments, Sentinel as worked example. |
 | v1.1 | 2026-05-22 | §7 reframing: first tenant identified as carrying forward the Sentinel methodological lineage rather than as Sentinel itself, reflecting the 2026-05-22 first-tenant rebuild decision. Substantive policy positions (permitted categories, prohibited designs, containment requirements, dual-use classification, recusal procedure) unchanged; Sentinel research program retained throughout §7 as the methodological prior work. Editorial clarification, not a §8 substantive amendment. |
 | v1.2 | 2026-06-21 | §6.7 added (RFC 0001): standing certification of curated starter profiles (the "promotion gate"). A profile-scoped standing approval that lets any eligible Researcher run a declawed, certified starter profile without a per-experiment §6.1 application — with a safe-to-expose bar (§6.7.2), a declared-safe-knob allowlist (§6.7.3), risk-proportionate authority (§6.7.4: low-risk = sign + publish + contest; external advisor for high-risk only), a standing approval that substitutes for accrued tier and enables replication (§6.7.5), version-bound re-certification (§6.7.6), and a complementary-not-replacement relationship to per-experiment review (§6.7.7). Substantive §8 amendment. **Adopted in force 2026-06-22** — the architecture is deployed + enforced on the coordinator, so the Maintainer adopts §6.7 internally; the RFC (PR #3) stays open for refinement (new requirements from real researchers) and the canonical fold-in to `main` is deferred until it settles. |
+| v1.3 | 2026-06-24 | §5.4 retitled "Worker tier alignment" → "Tier alignment" and extended with **Researcher alignment** (RFC 0002): a Researcher's research-standing tier (R0–R3) gates which §6.1 dual-use risk classes they may propose and supply their own experiment code ("BYOT") for — R1 = certified starters / low-risk only; R2 = BYOT for low + medium; R3 = eligible for high-risk. **Necessary, never sufficient** — every experiment is still classified and authorized under §6 (§6.3 unanimity and §5.2 raw-output rules unrelaxed; §4 prohibited at every tier; standing earns the *review*, never the promotion). Companion edit: [`GOVERNANCE.md`](GOVERNANCE.md) §11 names research-standing demotion and BYOT-revocation as contestable adverse actions. Defines **no new risk taxonomy** — maps the ladder onto the L/M/H §6.1 already mandates. Substantive §8 amendment. **Adopted in force 2026-06-24** — the R-standing ladder and the BYOT submit gate are deployed and operative on the coordinator (warn-but-allow, consistent with the human-in-the-loop default), so the Maintainer adopts §5.4 Researcher-alignment internally; the RFC (PR #4) stays open for refinement and the canonical fold-in to `main` is deferred until it settles. _(v1.2 is the concurrently-open RFC 0001 §6.7, which folds into `main` first.)_ |
 
 ---
 

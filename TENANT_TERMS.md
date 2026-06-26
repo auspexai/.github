@@ -92,7 +92,9 @@ A few actions *do* affect your standing, and **you can contest any of them**:
 
 - a **declined application**;
 - an **account demotion or suspension**;
-- a **worker quarantine** — including the *automatic* quarantine that follows a result signed as having run under weaker containment than the experiment required.
+- a **worker quarantine** — including the *automatic* quarantine that follows a result signed as having run under weaker containment than the experiment required;
+- a **research-standing demotion** or a **revocation of your own-code ("BYOT") eligibility** (your research-standing tier, and your eligibility to supply your own experiment code);
+- a **denied or revoked starter-profile certification** (de-certification).
 
 Two commitments come first:
 
