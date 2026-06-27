@@ -104,9 +104,21 @@ Direct publication of raw harmful outputs is not permitted as a default. Excepti
 - Audit logs record who accessed what, when, and for what purpose
 - The Tenant SDK and platform features are designed to support these requirements (see Plan §5.12); Researchers are responsible for using the supporting features correctly
 
-### 5.4 Worker tier alignment
+### 5.4 Tier alignment
 
-Experiments handling sensitive outputs are routed only to workers at trust tiers appropriate to the sensitivity. Capability-emergence studies and similar high-sensitivity research are routed to T2+ workers; less-sensitive drift research can use T1+; T0 anonymous workers do not handle research-internal harmful outputs (T0 work is replicated and quorum-checked, not assigned to sensitive outputs).
+Both sides of an experiment — the workers that **compute** it and the Researcher who **proposes** it — are aligned to its risk.
+
+**Worker alignment.** Experiments handling sensitive outputs are routed only to workers at trust tiers appropriate to the sensitivity. Capability-emergence studies and similar high-sensitivity research are routed to T2+ workers; less-sensitive drift research can use T1+; T0 anonymous workers do not handle research-internal harmful outputs (T0 work is replicated and quorum-checked, not assigned to sensitive outputs).
+
+**Researcher alignment.** *(added 2026-06-24, RFC 0002)* A Researcher's research-standing tier (R0–R3) gates which dual-use risk classes (§6.1) they may **propose, and supply their own experiment code for** — mirroring how worker tiers gate which sensitivities a worker may handle:
+
+- **R1 (identity-verified)** may run only the curated, certified reference experiments (§6.7) — no Researcher-supplied code — and only designs classified **low-risk**.
+- **R2 (established)** may additionally bring and run **their own experiment code** ("BYOT") for **low- and medium-risk** designs, under STRICT containment.
+- **R3 (trusted)** is additionally **eligible** to propose **high-risk** designs.
+
+This alignment is **necessary, never sufficient.** Research-standing confers only eligibility to *propose*; every experiment is still classified and authorized on its own merits under the §6 review. High-risk designs continue to require the §6.3 elevated review (Approver-pool unanimity; external advisor where warranted), and direct publication of raw harmful outputs continues to require unanimity and documented rationale under §5.2 — research-standing places a **floor beneath** those gates, it does not relax them. Designs prohibited under §4 remain prohibited **at every tier**.
+
+Research-standing promotions (R1→R2 by ethics review; R2→R3 by Maintainer vetting) are **human decisions recorded with reasons**; the standing record earns a Researcher the *review*, never the promotion itself. A research-standing demotion or a revocation of own-code ("BYOT") eligibility is an **adverse action**, contestable under [`GOVERNANCE.md`](GOVERNANCE.md) §11 (Contestation & appeals) — and, per that section's standard, research-standing is reduced **only by provable misconduct, never by a divergent or dissenting result** (the firewall-#1 corollary).
 
 ### 5.5 Incident response
 
@@ -190,6 +202,57 @@ The Approver pool may revoke a previously-granted approval for cause:
 
 Revocation requires the same procedure as initial approval (standard or elevated, matched to the experiment's risk classification). Revocation decisions are documented publicly with rationale; revoked tenants may re-apply with revised designs.
 
+### 6.7 Standing certification of curated starter profiles (the "promotion gate")
+
+AuspexAI may publish a curated **starter profile** of an approved tenant's experiment — a fixed, declawed configuration that an onboarding Researcher runs *without authoring their own application* — by granting it a **standing, profile-scoped certification**. This extends §6: rather than each newcomer filing a §6.1 application, the certified profile carries a standing approval they run under. Certification is granted only when the profile is **safe to expose to an unverified Researcher**, a higher containment bar than a per-experiment review because the audience is non-expert and not a vetted tenant team.
+
+#### 6.7.1 What may be certified
+
+Only a **profile** — a named, fixed configuration — of an **already-approved tenant** may be certified. A whole tenant, arbitrary Researcher code, or an uncertified configuration may not. The profile must meet the §6.7.2 bar by construction, not by the runner's discipline.
+
+#### 6.7.2 The safe-to-expose bar
+
+A profile is certified only if **all** of the following hold:
+
+1. **Profile-level risk is classified low** — assessed independently of the parent tenant's §6 classification. A profile of a medium-risk tenant may be low-risk when declawed (e.g., a benign fixed probe set run by a tenant whose broader research is medium-risk).
+2. **Containment holds by construction (§5).** The profile's mechanics enforce §5 output-handling — for example, a reduction that emits only non-reversible artifacts (hashes, aggregate metrics) so that raw harmful outputs are never produced — rather than relying on the runner to contain them. No relaxed execution containment; no sensitive-content flags.
+3. **Inputs are benign by construction.** The shipped work-unit / prompt set is vetted benign. The Researcher may adjust only the profile's **declared safe knobs** (§6.7.3) — not the inputs, the executor or reducer, or the containment.
+4. **Bounded blast radius.** Bounded duration, round/unit counts, replication, and compute cost.
+5. **Reproducible.** Deterministic enough that the corroboration cross-check is meaningful and the Researcher's evidence is trustworthy.
+6. **Routable at low sensitivity (§5.4).** The profile must not require sensitive-output (T2+) worker routing; T1+ suffices.
+7. **No high-risk capability.** None of relaxed containment, raw-artifact / controlled-disclosure output, custom reducer dispatch, mid-run parameter modification, or long-running / training-adjacent operation appears in a certified starter. A profile that needs any of these has failed criterion 1 and requires §6.3 elevated review as an ordinary experiment instead.
+8. **§4 compliance.** The profile falls within no prohibited-design category.
+
+A profile that would require §6.3 elevated review cannot be a certified starter: a starter is low-risk, or it is not certified.
+
+#### 6.7.3 Declared safe knobs
+
+Each certified profile **declares the knobs an onboarding Researcher may adjust**. Safe knobs change a run's *cost or length*, never its *risk*:
+
+- **Adjustable:** run cadence / interval, convergence or stability thresholds, round / unit counts up to a certified ceiling, and run labels.
+- **Locked (certification-owned):** the work-unit / prompt set, the executor and reducer, the containment level, the replication floor, the model identity, and the sensitive-content flags.
+
+Adjusting a locked knob takes the run outside the certification; such a run is not covered by the standing approval and requires a fresh §6.1 application.
+
+#### 6.7.4 Authority and procedure
+
+Certification is granted by the **same authority as a §6.2 standard review** — simple majority of the Approver pool — because a certified starter is, by §6.7.2, low-risk; §6.3 elevated review never applies to a certified starter. Certification is **bound to a specific released artifact version** (a signed snapshot) and authorizes that version's certified profile only.
+
+**The independence check is risk-proportionate.** A certified starter is, by §6.7.2, low-risk, and while the Maintainer must not *unilaterally* certify their own tenant's profile, a heavyweight external-advisor pre-approval is disproportionate for benign, declawed work and risks being a rubber stamp (manufactured assurance). So for a **low-risk** certification, independence comes from **transparency and contestability rather than a private pre-approver**: the Maintainer signs the certification, it is **published openly** (the exact certified envelope, the rationale, the signature, anchored in the transparency log), and anyone may challenge it through the contestation path (`GOVERNANCE.md` §11 / §6.5). A **named external advisor co-signature is required only for *high-risk* certifications** — which, by §6.7.2, a certified starter never is. (Post-pool, low-risk certification follows the §6.2 simple-majority above; the advisor / unanimity path attaches to high-risk work only.)
+
+#### 6.7.5 Standing approval and auto-clearance
+
+A certified profile carries a **standing approval**: **any eligible Researcher's run of *that exact certified profile*** — at the required *identity* tier (verified), and **regardless of accrued trust tier** — clears §6 without a per-run application or per-run Approver action. Certification thus *substitutes for accrued standing*, so the same standing approval serves **two cases**: an *onboarding newcomer* running a curated starter (who has no accrued tier yet), and **any Researcher re-running previously-certified work** — which makes certified experiments freely **reproducible** by eligible Researchers (the replication purpose of §3). The standing approval does **not** extend to any modified or uncertified profile.
+
+#### 6.7.6 Re-certification and review
+
+- Certification is bound to a release version. A **new released version that changes any §6.7.2 input** — the work-unit / prompt set, executor, reducer, containment, model, or any criterion of the bar — **requires re-certification** before that new version is run under a standing approval. A release that changes none of these (e.g., documentation only) does not.
+- Certified profiles are subject to §6.4 periodic review, to §6.5 raised concerns, and to §6.6 revocation. A **revoked certification removes the standing approval**; runs of that profile revert to requiring a §6.1 application.
+
+#### 6.7.7 Relationship to per-experiment review
+
+The promotion gate is **complementary to, not a replacement for**, the §6.1–§6.3 per-experiment review. A Researcher's own (bring-your-own-tenant) *novel* experiment is reviewed under §6.1–§6.3; running a *certified* profile lets any eligible Researcher run pre-cleared work *without* that. The line is **vetted vs. novel**, not newcomer vs. veteran: the manual gate is reserved for genuinely new or uncertified work, where human judgment adds value; certified work (and routine work from trusted submitters) auto-clears. So certification automates two currently-manual cases — newcomers within a controlled risk footprint, and any Researcher re-running previously-certified experiments — while preserving human review exactly where it earns its keep.
+
 ---
 
 ## 7. First tenant as the worked example
@@ -247,7 +310,7 @@ This policy does not cover:
 
 - **Research conducted by AuspexAI Researchers off-network** — work outside AuspexAI is the Researcher's own ethics regime; AuspexAI takes no position
 - **Research involving human subjects in ways beyond what is incidental to AI-agent experiments** — for human-subjects research, AuspexAI defers to the Researcher's institutional IRB or equivalent and does not provide a substitute
-- **Volunteer Worker conduct on the network** — see the volunteer Terms of Participation ([`BETA_TERMS.md`](BETA_TERMS.md), closed-beta)
+- **Volunteer Worker conduct on the network** — see the volunteer Terms of Participation ([`BETA_TERMS.md`](BETA_TERMS.md), open beta)
 - **Maintainer / Approver / Platform Contributor / community member conduct in community spaces** — see [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md)
 - **Security disclosure for vulnerabilities** — see [`SECURITY.md`](SECURITY.md)
 - **Tenant code's own internal ethics processes** — large tenant teams may have their own ethics boards; AuspexAI Approver-pool review is complementary to, not a substitute for, such processes
@@ -260,6 +323,8 @@ This policy does not cover:
 |---------|------|---------|
 | v1 | 2026-04-27 | Initial. Establishes dual-use distinction, permitted/prohibited research types, containment requirements, application and review process, periodic review for long-running experiments, Sentinel as worked example. |
 | v1.1 | 2026-05-22 | §7 reframing: first tenant identified as carrying forward the Sentinel methodological lineage rather than as Sentinel itself, reflecting the 2026-05-22 first-tenant rebuild decision. Substantive policy positions (permitted categories, prohibited designs, containment requirements, dual-use classification, recusal procedure) unchanged; Sentinel research program retained throughout §7 as the methodological prior work. Editorial clarification, not a §8 substantive amendment. |
+| v1.2 | 2026-06-21 | §6.7 added (RFC 0001): standing certification of curated starter profiles (the "promotion gate"). A profile-scoped standing approval that lets any eligible Researcher run a declawed, certified starter profile without a per-experiment §6.1 application — with a safe-to-expose bar (§6.7.2), a declared-safe-knob allowlist (§6.7.3), risk-proportionate authority (§6.7.4: low-risk = sign + publish + contest; external advisor for high-risk only), a standing approval that substitutes for accrued tier and enables replication (§6.7.5), version-bound re-certification (§6.7.6), and a complementary-not-replacement relationship to per-experiment review (§6.7.7). Substantive §8 amendment. **Adopted in force 2026-06-22** — the architecture is deployed + enforced on the coordinator, so the Maintainer adopts §6.7 internally; the RFC (PR #3) stays open for refinement (new requirements from real researchers) and the canonical fold-in to `main` is deferred until it settles. |
+| v1.3 | 2026-06-24 | §5.4 retitled "Worker tier alignment" → "Tier alignment" and extended with **Researcher alignment** (RFC 0002): a Researcher's research-standing tier (R0–R3) gates which §6.1 dual-use risk classes they may propose and supply their own experiment code ("BYOT") for — R1 = certified starters / low-risk only; R2 = BYOT for low + medium; R3 = eligible for high-risk. **Necessary, never sufficient** — every experiment is still classified and authorized under §6 (§6.3 unanimity and §5.2 raw-output rules unrelaxed; §4 prohibited at every tier; standing earns the *review*, never the promotion). Companion edit: [`GOVERNANCE.md`](GOVERNANCE.md) §11 names research-standing demotion and BYOT-revocation as contestable adverse actions. Defines **no new risk taxonomy** — maps the ladder onto the L/M/H §6.1 already mandates. Substantive §8 amendment. **Adopted in force 2026-06-24** — the R-standing ladder and the BYOT submit gate are deployed and operative on the coordinator (warn-but-allow, consistent with the human-in-the-loop default), so the Maintainer adopts §5.4 Researcher-alignment internally; the RFC (PR #4) stays open for refinement and the canonical fold-in to `main` is deferred until it settles. _(v1.2 is the concurrently-open RFC 0001 §6.7, which folds into `main` first.)_ |
 
 ---
 

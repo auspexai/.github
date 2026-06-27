@@ -1,8 +1,8 @@
-# Closed-Beta Terms of Participation
+# Open-Beta Terms of Participation
 
-**Status:** Phase 2 closed beta (2026-05 onwards). Bridge document — the full counsel-reviewed Terms of Participation lands with Phase 3 public launch per [`AuspexAI_Principles_and_Scope.md` §7](https://github.com/auspexai) (private; public summary in the org profile).
+**Status:** Phase 2 open beta — open to public participation since 2026-06 (the closed beta ran from 2026-05). Bridge document — the full counsel-reviewed Terms of Participation lands with Phase 3 public launch per [`AuspexAI_Principles_and_Scope.md` §7](https://github.com/auspexai) (private; public summary in the org profile).
 
-**Audience:** People personally invited to run the AuspexAI worker on their machines during the closed beta. If you're reading this without an invitation, the worker `.deb` is publicly downloadable but the coordinator currently runs as a small lab deployment intended for invited participants — please email **contact@auspexai.network** before installing.
+**Audience:** Anyone who wants to donate compute by running the AuspexAI worker during the open beta. Install with the published one-liner at [getworker.auspexai.network](https://getworker.auspexai.network), or download the worker `.deb` / pip package directly. You can run **anonymously (T0)** with no sign-up; identity-binding **(T1+)** is opt-in. Questions before you install? Email **contact@auspexai.network** — we're glad to talk it through first.
 
 ---
 
@@ -79,7 +79,7 @@ This is a deliberate command (you type the word `withdraw` to confirm). It:
 2. Deletes your local state (SQLite DB, keystore entry, audit log)
 3. Severs the binding between your worker pubkey and your account (if T1+)
 
-Phase 2 makes a **best-effort** commitment: withdrawal requests are typically processed in under a minute. Phase 3 adds the **GDPR-aligned 30-day SLA** to a more formal Terms of Participation document, but for closed beta the volume is too small for formal SLAs to be meaningful.
+Phase 2 makes a **best-effort** commitment: withdrawal requests are typically processed in under a minute. Phase 3 adds the **GDPR-aligned 30-day SLA** to a more formal Terms of Participation document, but for the open beta the volume is still small enough that formal SLAs aren't yet meaningful.
 
 You can also email **contact@auspexai.network** to request withdrawal if you can't run the CLI for any reason.
 
@@ -106,7 +106,6 @@ You are bound by the project [Code of Conduct](CODE_OF_CONDUCT.md). Specifically
 
 - Don't run malicious workers (intentional bad results, attempts to influence quorum, attempts to compromise the coordinator)
 - Don't attempt to deanonymize other volunteers from the receipt data
-- Don't share invitation access without checking with the Maintainer first (the closed beta has a tight feedback loop; uninvited participants can disrupt that)
 
 Network-level abuse is handled through technical enforcement (revocation, ban, trust-tier demotion), not Code-of-Conduct processes. CoC processes apply to community interaction (Discussions, issues, PRs, etc.).
 
@@ -135,4 +134,4 @@ This beta document is intentionally short and plain-language. If anything here s
 
 ---
 
-**Document state:** v0.1, ratified 2026-05-23 for the Phase 2 closed beta. Changes follow the substantial-architectural-change RFC procedure in [GOVERNANCE.md](GOVERNANCE.md). The Phase 3 full Terms of Participation supersedes this document when it lands.
+**Document state:** v0.1, ratified 2026-05-23 for the Phase 2 beta; updated 2026-06-27 when the beta opened to public participation. Changes follow the substantial-architectural-change RFC procedure in [GOVERNANCE.md](GOVERNANCE.md). The Phase 3 full Terms of Participation supersedes this document when it lands.
