@@ -345,6 +345,6 @@ Adverse actions — declining an application, demoting or suspending an account,
 | Approver pool | (vacant) | Bootstrap fallback per §5.2 in force. Recruitment per §5.2 triggers. |
 | Platform Contributors | (none external; Maintainer is the sole platform contributor) | Recruitment passively open; explicit recruitment per §5.1 trigger. |
 | Researchers | Implicit (first tenant authored by Maintainer) | Bootstrap-addendum recusal per §6.3 applies for Maintainer-authored tenants. |
-| Volunteers | (none external yet; pre-Phase-3) | Volunteer onboarding live at Phase 3. |
+| Volunteers | Open to the public (open beta, from 2026-06) | Volunteer onboarding is live — enroll via [getworker.auspexai.network](https://getworker.auspexai.network). Anonymous (T0) or identity-bound (T1+). |
 
 This section is updated as roles are filled.

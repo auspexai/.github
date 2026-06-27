@@ -1,8 +1,8 @@
-# Closed-Beta Terms of Participation — Tenants & Researchers
+# Open-Beta Terms of Participation — Tenants & Researchers
 
-**Status:** Phase 2 closed beta (2026-05 onwards). Bridge document — the full counsel-reviewed Terms of Participation lands with Phase 3 public launch per [`AuspexAI_Principles_and_Scope.md` §7](https://github.com/auspexai) (private; public summary in the org profile). The volunteer-facing counterpart is [`BETA_TERMS.md`](BETA_TERMS.md).
+**Status:** Phase 2 open beta — open to public participation since 2026-06 (the closed beta ran from 2026-05). Bridge document — the full counsel-reviewed Terms of Participation lands with Phase 3 public launch per [`AuspexAI_Principles_and_Scope.md` §7](https://github.com/auspexai) (private; public summary in the org profile). The volunteer-facing counterpart is [`BETA_TERMS.md`](BETA_TERMS.md).
 
-**Audience:** Researchers and organizations accepted as **tenants** to run experiments on the AuspexAI network. Tenant acceptance is currently invitation- and Approver-gated; the first tenant is the Vigiles research project. If you're interested in running experiments and haven't been onboarded, email **contact@auspexai.network**.
+**Audience:** Researchers and organizations running experiments on the AuspexAI network as **tenants**. Onboarding is open: connect via [getresearcher.auspexai.network](https://getresearcher.auspexai.network) to bind your identity and run a **certified starter** experiment. Running your **own custom experiments** (bring-your-own-tenant) is gated on research standing and Approver review per [`GOVERNANCE.md`](GOVERNANCE.md) §5.4. The first tenant is the Vigiles research project. Questions? Email **research@auspexai.network**.
 
 Throughout, "you" means the tenant and the researchers acting on its behalf; "we" / "Auspex" means the AuspexAI network operator.
 
@@ -19,7 +19,7 @@ By submitting experiments to the AuspexAI coordinator as an accepted tenant, you
 
 You are NOT agreeing to:
 
-- Pay anything (the network is donation-funded; there are no tenant fees in the closed beta)
+- Pay anything (the network is donation-funded; there are no tenant fees in the open beta)
 - Surrender ownership of your results, your manifests, or your IP — the science is yours
 - Let other tenants see your private experiment data (results and per-experiment activity are tenant-scoped)
 - Cede control over which volunteers may see your identity (volunteer/worker identities are pseudonymous to you; you are pseudonymous to them)
@@ -116,4 +116,4 @@ The full Terms of Participation arrives at public launch (Phase 3), counsel-revi
 
 ---
 
-**Document state:** v0.1 draft for the Phase 2 closed beta. Changes follow the change procedure in [GOVERNANCE.md](GOVERNANCE.md). The Phase 3 full Terms of Participation supersedes this document when it lands.
+**Document state:** v0.1 draft for the Phase 2 beta; updated 2026-06-27 when the beta opened to public participation. Changes follow the change procedure in [GOVERNANCE.md](GOVERNANCE.md). The Phase 3 full Terms of Participation supersedes this document when it lands.

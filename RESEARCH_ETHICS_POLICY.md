@@ -310,7 +310,7 @@ This policy does not cover:
 
 - **Research conducted by AuspexAI Researchers off-network** — work outside AuspexAI is the Researcher's own ethics regime; AuspexAI takes no position
 - **Research involving human subjects in ways beyond what is incidental to AI-agent experiments** — for human-subjects research, AuspexAI defers to the Researcher's institutional IRB or equivalent and does not provide a substitute
-- **Volunteer Worker conduct on the network** — see the volunteer Terms of Participation ([`BETA_TERMS.md`](BETA_TERMS.md), closed-beta)
+- **Volunteer Worker conduct on the network** — see the volunteer Terms of Participation ([`BETA_TERMS.md`](BETA_TERMS.md), open beta)
 - **Maintainer / Approver / Platform Contributor / community member conduct in community spaces** — see [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md)
 - **Security disclosure for vulnerabilities** — see [`SECURITY.md`](SECURITY.md)
 - **Tenant code's own internal ethics processes** — large tenant teams may have their own ethics boards; AuspexAI Approver-pool review is complementary to, not a substitute for, such processes
