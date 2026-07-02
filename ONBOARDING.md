@@ -62,10 +62,20 @@ auspexai-dashboard serve
 ```
 
 The Overview page shows your confirmed identity once your key is bound
-(tenant id + key match, checked live against the coordinator). From there:
-your first experiment is a signed manifest + work units submitted via the
-SDK — the dashboard's integrity panel shows the attestation, transparency-log
+(tenant id + key match, checked live against the coordinator). From there,
+the recommended first run is the **certified Vigiles starter** — no code, one
+command, auto-cleared, and pre-registered (its design is anchored in the
+public transparency log before any data exists):
+
+```bash
+git clone https://github.com/auspexai/vigiles-tenant && cd vigiles-tenant
+auspexai-tenant experiment launch --profile starter
+```
+
+The dashboard's integrity panel shows the attestation, transparency-log
 anchor, and custody state as results arrive, and `experiment export --verify`
-hands you the evidence bundle you can re-verify offline, forever.
+hands you the evidence bundle you can re-verify offline, forever — including
+the `design ≺ data` proof. When you're ready to bring your own experiment,
+copy the starter's `experiment.toml` as your template.
 
 Questions, or stuck at any step? Open an issue on any AuspexAI repo; a Maintainer will find it.
