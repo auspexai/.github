@@ -2,15 +2,15 @@
 
 Thanks for your interest. AuspexAI is a volunteer-driven, open-source distributed compute network for AI safety research. This document covers how to contribute, what's expected, and what to expect from us.
 
-## Phase 0 reality
+## Project status
 
-AuspexAI is in **Phase 0 — Foundation** as of 2026-04-27. There is not yet a platform codebase to contribute to; code begins in Phase 1. What you *can* do today:
+AuspexAI is in **open beta**. The platform, Worker, Tenant SDK, researcher-dashboard, and operator-console are all live and versioned, running on the public network — there is real code to contribute to today. What you *can* do:
 
-- Read [`GOVERNANCE.md`](GOVERNANCE.md) and the public planning artifacts as they appear, and open issues with feedback or questions
-- Watch the organization for activity as Phase 1 begins
-- If you have specific expertise (distributed systems, sandbox security, OAuth device flow, OS-keystore integration, build signing, AI safety research methodology), drop a note via [`contact@auspexai.network`](mailto:contact@auspexai.network) — we'd like to know you're around as Phase 1 ramps up
+- Read [`GOVERNANCE.md`](GOVERNANCE.md) and the published policies (below), and open issues with feedback or questions
+- Pick up an issue or propose a change in the live repositories — see the contribution paths and pull-request workflow below
+- If you have specific expertise (distributed systems, sandbox security, OAuth device flow, OS-keystore integration, build signing, AI safety research methodology), drop a note via [`contact@auspexai.network`](mailto:contact@auspexai.network) — we'd like to know you're around
 
-When platform code begins shipping, this document will evolve to cover the real PR flow. The contribution model below (DCO, license, CoC) is fixed and applies from day one.
+The contribution model below (DCO, license, CoC) applies from day one.
 
 ## Before contributing
 
@@ -28,7 +28,7 @@ AuspexAI has multiple contribution paths with different processes, IP postures, 
 
 **Examples**: a bug fix in the Worker, a new feature in the Tenant SDK, a documentation improvement, a build-pipeline enhancement.
 
-**License**: AGPL-3.0, inbound equals outbound. You retain copyright on your contribution; you license it to the project and to all downstream users under AGPL-3.0 by submitting it.
+**License**: inbound equals outbound, under each repository's own license. The **platform, worker, and website** (and this `.github` policy repo) are **AGPL-3.0**; the **Tenant SDK, researcher-dashboard, and operator-console** are **Apache-2.0**. You retain copyright on your contribution; by submitting it you license it to the project and to all downstream users under the license the target repository ships under.
 
 **DCO**: required (see "Developer Certificate of Origin" section below).
 
@@ -44,7 +44,7 @@ AuspexAI has multiple contribution paths with different processes, IP postures, 
 
 **Where the code lives**: typically in a repository owned by the Researcher's team — which may or may not be inside the `auspexai` GitHub organization. AuspexAI does not require tenants to be hosted in the AuspexAI org; tenants can live in any repo as long as the experiment artifacts (job manifests, project module, result schema) integrate with the Tenant SDK contract. The first tenant ships as a worked example.
 
-**License**: the Researcher's choice. The Tenant SDK boundary is designed so that consuming the SDK does *not* AGPL-infect tenant code; Researchers may license their tenant project modules under a permissive, copyleft, or proprietary license, as the science requires. (Caveat: this SDK-boundary design is being validated in Phase 1 with counsel review; until validation, treat the AGPL non-infection of tenant code as a working assumption rather than a final guarantee. See plan §5.2.)
+**License**: the Researcher's choice. The Tenant SDK ships under **Apache-2.0** — a permissive license — so consuming it does *not* copyleft-infect tenant code; Researchers may license their tenant project modules under a permissive, copyleft, or proprietary license, as the science requires. The SDK's permissive license is precisely what guarantees this: it is a thin client over a published data + subprocess contract, permissive on the SDK side even though the platform it talks to is copyleft (see plan §5.2).
 
 **DCO**: applies to code changes within tenant repos that are inside the `auspexai` GitHub organization. For tenant repos outside the org, the tenant's own contribution policy applies — AuspexAI does not impose DCO on out-of-org tenant repos.
 
@@ -52,7 +52,7 @@ AuspexAI has multiple contribution paths with different processes, IP postures, 
 
 1. Author or update tenant code in the appropriate repo (yours or an in-org tenant repo if you're invited to contribute)
 2. Submit a tenant application to the Approver pool — process forthcoming as the Approver pool forms
-3. Approver pool reviews against the published acceptance bar (which incorporates the Research Ethics Policy — `RESEARCH_ETHICS_POLICY.md`, forthcoming Phase 0 deliverable)
+3. Approver pool reviews against the published acceptance bar (which incorporates the Research Ethics Policy — [`RESEARCH_ETHICS_POLICY.md`](RESEARCH_ETHICS_POLICY.md))
 4. On approval, your tenant becomes eligible to run on the public network
 
 **Direction control**: Researchers retain control over their tenant's scientific direction; AuspexAI does not edit tenant project code. The Approver pool has approval, modification-request, and revocation authority over *what runs on the network*, not authorship authority over what tenant code says. A Researcher whose tenant is approved retains responsibility for the tenant's adherence to project values and ongoing review.
@@ -69,13 +69,13 @@ AuspexAI has multiple contribution paths with different processes, IP postures, 
 
 **Process**: open an issue or a GitHub Discussion in the relevant repo, or comment on existing threads.
 
-This path is open and welcomed at every phase, including Phase 0 when there is little code to contribute to. Substantive issue participation is one of the things that builds the qualitative engagement bar referenced in `GOVERNANCE.md` §5.1 for co-Maintainer recruitment.
+This path is open and welcomed at every stage of the project. Substantive issue participation is one of the things that builds the qualitative engagement bar referenced in `GOVERNANCE.md` §5.1 for co-Maintainer recruitment.
 
 ### Path 4: Volunteer participation
 
 **What it is**: running an AuspexAI Worker on your machine to donate compute. Not a "contribution" in the intellectual property sense; it's network participation.
 
-This path is out of scope for this document. See the Volunteer Terms of Participation (forthcoming, Phase 2) when it is published.
+This path is out of scope for this document. See the [Open-Beta Terms of Participation](BETA_TERMS.md) for volunteers who run a Worker.
 
 ## License and IP framework
 
@@ -92,9 +92,11 @@ Practical implications for you as a Platform Contributor:
 
 If you do not have authority to license code under AGPL-3.0 (for example, if your employer claims rights to your work), do not submit it as your own. Resolve the authority question first.
 
+The copyleft cascade above (including the network-served-derivative clause) applies to the **AGPL-3.0** repositories — the platform, worker, and website. The **Tenant SDK, researcher-dashboard, and operator-console** ship under **Apache-2.0**: the same inbound-equals-outbound principle applies, but under Apache-2.0's permissive terms rather than AGPL's copyleft. Check the `LICENSE` file in the repository you're contributing to.
+
 ### License of tenant code
 
-Tenant project modules are not subject to AGPL-3.0 by virtue of consuming the AGPL-3.0 Tenant SDK; the SDK boundary is designed to prevent license infection. Researchers may license tenant code under whatever terms their science requires — permissive, copyleft, or proprietary — subject to the SDK-boundary validation noted in Path 2 above.
+Tenant project modules are not subject to AGPL-3.0 by virtue of consuming the Tenant SDK: the SDK ships under **Apache-2.0**, a permissive license that cannot copyleft-infect the code that consumes it. Researchers may license tenant code under whatever terms their science requires — permissive, copyleft, or proprietary.
 
 If a tenant lives inside the `auspexai` GitHub organization, the tenant's choice of license is recorded in that repo. If a tenant lives outside the org, AuspexAI takes no position on the tenant's license; the Approver pool reviews the experiment design and ethics, not the tenant's IP arrangements.
 
@@ -226,7 +228,7 @@ Bug fixes, small features, documentation improvements, refactors that don't chan
 
 ### Squash, rebase, or merge
 
-The project's preference for merge style will be set per-repository as code begins to land. Until then: prefer rebasing your branch onto current `main` before requesting review, and avoid merge commits in your feature branch.
+The project's merge-style preference is set per-repository. Until a given repo specifies one: prefer rebasing your branch onto current `main` before requesting review, and avoid merge commits in your feature branch.
 
 ## Reporting bugs
 
@@ -242,9 +244,9 @@ Open an issue in the relevant repository. Include:
 **Do not file public issues for security vulnerabilities.** Use one of:
 
 - Email [`security@auspexai.network`](mailto:security@auspexai.network)
-- GitHub's private security advisory feature on the relevant repository (forthcoming as repos come online)
+- GitHub's private security advisory feature on the relevant repository
 
-A formal `SECURITY.md` describing the disclosure process and response timelines will be published in Phase 1.
+See [`SECURITY.md`](SECURITY.md) for the disclosure process and response timelines.
 
 ## Reporting Code of Conduct violations
 
@@ -252,7 +254,7 @@ See [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) for the reporting procedure, resp
 
 ## Communication
 
-- **General questions and discussion**: open a GitHub Discussion in the relevant repository (forthcoming as repos come online), or email [`contact@auspexai.network`](mailto:contact@auspexai.network)
+- **General questions and discussion**: open a GitHub Discussion in the relevant repository, or email [`contact@auspexai.network`](mailto:contact@auspexai.network)
 - **Bug reports**: GitHub issue
 - **Security issues**: see "Reporting security issues" above
 - **CoC issues**: see "Reporting Code of Conduct violations" above
